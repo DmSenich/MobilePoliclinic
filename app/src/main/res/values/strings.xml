@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Policlinic</string>
+    <string name="doctor">Доктор</string>
+    <string name="doctors">Доктора</string>
+    <string name="patient">Пациент</string>
+    <string name="patients">Пациенты</string>
+    <string name="specialty">Специальность</string>
+    <string name="specialties">Специальности</string>
+    <string name="visiting">Посещение</string>
+    <string name="visitings">Посещения</string>
+    <string name="disease">Поставленный диагноз</string>
+    <string name="diseases">Поставленные диагнозы</string>
+    <string name="disease_type">Тип заболевания</string>
+    <string name="disease_types">Типы заболеваний</string>
+</resources>
