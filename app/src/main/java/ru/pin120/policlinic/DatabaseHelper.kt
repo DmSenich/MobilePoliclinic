@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Build
+import ru.pin120.policlinic.models.Specialty
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -97,6 +98,26 @@ class DatabaseHelper(private val mcontext:Context) : SQLiteOpenHelper(mcontext, 
         if(newVersion > oldVersion)
             mNeedUpdate = true
     }
+
+//    public fun getSpecialties():ArrayList<Specialty>{
+//        val specialties = ArrayList<Specialty>()
+//        var specialty : Specialty
+//
+//        //specialties = mDBHelper.getSpecialties();
+//        mDataBase?.rawQuery("select * from specialties", null).use{
+//                cursor ->
+//            cursor?.moveToFirst()
+//
+//            while (!cursor?.isAfterLast!!){
+//                specialty = Specialty(null,null)
+//                specialty.id = cursor.getLong(0)
+//                specialty.name = cursor.getString(1)
+//                specialties.add(specialty)
+//                cursor.moveToNext()
+//            }
+//        }
+//        return specialties
+//    }
 
 }
 

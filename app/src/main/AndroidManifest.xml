@@ -31,6 +31,27 @@
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"></meta-data>
         </activity>
+        <activity android:name=".details.SpecialtyDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".SpecialtyMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".SpecialtyMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.SpecialtyUpdateActivity"
+            android:exported="false"
+            android:parentActivityName=".details.SpecialtyDetailsActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".SpecialtyDetailsActivity"></meta-data>
+        </activity>
+        <activity android:name=".news.SpecialtyNewActivity"
+            android:exported="false"
+            android:parentActivityName=".SpecialtyMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".SpecialtyMainActivity"></meta-data>
+        </activity>
     </application>
 
 </manifest>

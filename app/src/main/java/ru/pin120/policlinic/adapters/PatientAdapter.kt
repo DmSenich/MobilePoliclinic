@@ -1,0 +1,45 @@
+package ru.pin120.policlinic.adapters
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import ru.pin120.policlinic.R
+import ru.pin120.policlinic.models.Patient
+
+class PatientAdapter(context: Context, resource: Int, objects: List<Patient>) :
+    ArrayAdapter<Patient>(context, resource, objects) {
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var convertView = convertView
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_item_patients, parent, false)
+        }
+
+        val patient = getItem(position)
+
+        val idTV: TextView = convertView!!.findViewById(R.id.id)
+        val lastNameTV: TextView = convertView.findViewById(R.id.lastName)
+        val firstNameTV: TextView = convertView.findViewById(R.id.firstName)
+        val patrTV: TextView = convertView.findViewById(R.id.patr)
+        val dateBirthTV: TextView = convertView.findViewById(R.id.dateBirth)
+        val areaTV: TextView = convertView.findViewById(R.id.area)
+        val cityTV: TextView = convertView.findViewById(R.id.city)
+        val houseTV: TextView = convertView.findViewById(R.id.house)
+        val apartmentTV: TextView = convertView.findViewById(R.id.apartment)
+
+        idTV.text = patient?.id.toString()
+        lastNameTV.text = patient?.lastName
+        firstNameTV.text = patient?.firstName
+        patrTV.text = patient?.patr ?: ""
+        dateBirthTV.text = patient?.dateBirth.toString()
+        areaTV.text = patient?.area
+        cityTV.text = patient?.city
+        houseTV.text = patient?.house
+        apartmentTV.text = patient?.apartment ?: ""
+
+        return convertView
+    }
+}
