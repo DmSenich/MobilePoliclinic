@@ -19,7 +19,7 @@ class SpecialtyMainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_specialties)
+        setContentView(R.layout.activity_main_list)
 
         //val textView: TextView = findViewById(R.id.textView)
         mDBHelper = DatabaseHelper(this)

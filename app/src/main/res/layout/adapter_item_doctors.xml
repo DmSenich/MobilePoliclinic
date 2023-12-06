@@ -34,31 +34,7 @@
         android:textColor="@android:color/darker_gray" />
 
     <TextView
-        android:id="@+id/dateBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/area"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/house"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/apartment"
+        android:id="@+id/workExp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"

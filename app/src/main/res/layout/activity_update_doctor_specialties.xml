@@ -5,23 +5,24 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <TextView
+        android:id="@+id/tvDoctorId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text=""
+        android:visibility="invisible" />
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:clipToPadding="false" />
+        android:layout_height="611dp" />
 
     <Button
-        android:id="@+id/bNew"
+        android:id="@+id/OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add New Doctor"
-        android:layout_gravity="end"
-        android:layout_marginTop="16dp" />
+        android:layout_weight="1"
+        android:text="Save" />
 
 </LinearLayout>

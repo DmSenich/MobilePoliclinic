@@ -33,6 +33,7 @@
         </activity>
         <activity android:name=".details.SpecialtyDetailsActivity"
             android:exported="false"
+            android:label="@string/specialty"
             android:parentActivityName=".SpecialtyMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -40,6 +41,7 @@
         </activity>
         <activity android:name=".updates.SpecialtyUpdateActivity"
             android:exported="false"
+            android:label="@string/specialty"
             android:parentActivityName=".details.SpecialtyDetailsActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -47,10 +49,170 @@
         </activity>
         <activity android:name=".news.SpecialtyNewActivity"
             android:exported="false"
+            android:label="@string/specialty"
             android:parentActivityName=".SpecialtyMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
                 android:value=".SpecialtyMainActivity"></meta-data>
+        </activity>
+
+
+        <activity android:name=".PatientMainActivity"
+            android:exported="false"
+            android:label="@string/patients"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+        <activity android:name=".details.PatientDetailsActivity"
+            android:exported="false"
+            android:label="@string/patient"
+            android:parentActivityName=".PatientMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".PatientMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.PatientUpdateActivity"
+            android:exported="false"
+            android:label="@string/patient"
+            android:parentActivityName=".details.PatientDetailsActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".PatientDetailsActivity"></meta-data>
+        </activity>
+        <activity android:name=".news.PatientNewActivity"
+            android:exported="false"
+            android:label="@string/patient"
+            android:parentActivityName=".PatientMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".PatientMainActivity"></meta-data>
+        </activity>
+
+        <activity android:name=".DiseaseTypeMainActivity"
+            android:exported="false"
+            android:label="@string/disease_types"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+        <activity android:name=".details.DiseaseTypeDetailsActivity"
+            android:exported="false"
+            android:label="@string/disease_type"
+            android:parentActivityName=".DiseaseTypeMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".DiseaseTypeMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.DiseaseTypeUpdateActivity"
+            android:exported="false"
+            android:label="@string/disease_type"
+            android:parentActivityName=".details.DiseaseTypeDetailsActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".DiseaseTypeDetailsActivity"></meta-data>
+        </activity>
+        <activity android:name=".news.DiseaseTypeNewActivity"
+            android:exported="false"
+            android:label="@string/disease_type"
+            android:parentActivityName=".DiseaseTypeMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".DiseaseTypeMainActivity"></meta-data>
+        </activity>
+
+
+        <activity android:name=".DoctorMainActivity"
+            android:exported="false"
+            android:label="@string/doctors"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+        <activity android:name=".details.DoctorDetailsActivity"
+            android:exported="false"
+            android:label="@string/doctor"
+            android:parentActivityName=".DoctorMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".DoctorMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.DoctorUpdateActivity"
+            android:exported="false"
+            android:label="@string/doctor"
+            android:parentActivityName=".details.DoctorDetailsActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".DoctorDetailsActivity"></meta-data>
+        </activity>
+        <activity android:name=".news.DoctorNewActivity"
+            android:exported="false"
+            android:label="@string/doctor"
+            android:parentActivityName=".DoctorMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".DoctorMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.DoctorSpecialtiesActivity"
+            android:exported="false"
+            android:label="@string/specialties"
+            android:parentActivityName=".details.DoctorDetailsActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".details.DoctorDetailsActivity"></meta-data>
+        </activity>
+
+        <activity android:name=".VisitingMainActivity"
+            android:exported="false"
+            android:label="@string/visitings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+        <activity android:name=".details.VisitingDetailsActivity"
+            android:exported="false"
+            android:label="@string/visiting"
+            android:parentActivityName=".VisitingMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".VisitingMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.VisitingUpdatesActivity"
+            android:exported="false"
+            android:label="@string/visiting"
+            android:parentActivityName=".details.VisitingDetailsActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".VisitingDetailsActivity"></meta-data>
+        </activity>
+        <activity android:name=".news.VisitingNewActivity"
+            android:exported="false"
+            android:label="@string/visiting"
+            android:parentActivityName=".VisitingMainActivity"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".VisitingMainActivity"></meta-data>
+        </activity>
+        <activity android:name=".updates.VisitingDoctorActivity"
+            android:exported="false"
+            android:label="@string/doctors"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+        </activity>
+        <activity android:name=".updates.VisitingPatientActivity"
+            android:exported="false"
+            android:label="@string/patients"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+        </activity>
+        <activity android:name=".details.VisitingDiseasesActivity"
+            android:exported="false"
+            android:label="@string/diseases"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+            <meta-data android:name="@android.support.PARENT_ACTIVITY"
+                android:value=".details.VisitingDetailsActivity"></meta-data>
         </activity>
     </application>
 

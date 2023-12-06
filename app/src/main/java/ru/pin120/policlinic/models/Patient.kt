@@ -11,5 +11,5 @@ class Patient(
     var area: String,
     var city: String,
     var house: String,
-    var apartment: String?
+    var apartment: Long?
 )

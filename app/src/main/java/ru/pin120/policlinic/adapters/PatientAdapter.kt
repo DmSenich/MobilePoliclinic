@@ -34,11 +34,21 @@ class PatientAdapter(context: Context, resource: Int, objects: List<Patient>) :
         lastNameTV.text = patient?.lastName
         firstNameTV.text = patient?.firstName
         patrTV.text = patient?.patr ?: ""
-        dateBirthTV.text = patient?.dateBirth.toString()
+        val year = patient?.dateBirth?.year!! + 1900
+        val month = patient?.dateBirth?.month
+        val day = patient?.dateBirth?.date
+        val selectedDate = "$year-${month?.plus(1)}-$day"
+        dateBirthTV.text = selectedDate.toString()
         areaTV.text = patient?.area
         cityTV.text = patient?.city
         houseTV.text = patient?.house
-        apartmentTV.text = patient?.apartment ?: ""
+        if(patient?.apartment == 0L){
+            apartmentTV.text == ""
+        }
+        else{
+            apartmentTV.text = patient?.apartment.toString()
+        }
+
 
         return convertView
     }

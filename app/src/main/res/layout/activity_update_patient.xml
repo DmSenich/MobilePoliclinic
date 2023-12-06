@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text=""
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name" />
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name" />
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patronymic" />
+
+    <EditText
+        android:id="@+id/etPatr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DateBirth" />
+
+    <DatePicker
+        android:id="@+id/etDateBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Area" />
+
+    <EditText
+        android:id="@+id/etArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City" />
+
+    <EditText
+        android:id="@+id/etCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="House" />
+
+    <EditText
+        android:id="@+id/etHouse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apartment" />
+
+    <EditText
+        android:id="@+id/etApartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+    <!-- Добавьте здесь элементы для остальных полей объекта Patient -->
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text=""
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name" />
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name" />
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patronymic" />
+
+    <EditText
+        android:id="@+id/etPatr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WorkExp" />
+
+    <EditText
+        android:id="@+id/etWorkExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/OK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+</LinearLayout>

@@ -30,9 +30,13 @@ class MainActivity : ComponentActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.doctors ->{
+                val intent = Intent(this@MainActivity, DoctorMainActivity::class.java)
+                startActivity(intent)
                 return true
             }
             R.id.patients ->{
+                val intent = Intent(this@MainActivity, PatientMainActivity::class.java)
+                startActivity(intent)
                 return true
             }
             R.id.specialties->{
@@ -41,9 +45,13 @@ class MainActivity : ComponentActivity() {
                 return true
             }
             R.id.disease_types ->{
+                val intent = Intent(this@MainActivity, DiseaseTypeMainActivity::class.java)
+                startActivity(intent)
                 return true
             }
             R.id.visitings ->{
+                val intent = Intent(this@MainActivity, VisitingMainActivity::class.java)
+                startActivity(intent)
                 return true
             }
         }

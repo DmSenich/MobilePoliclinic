@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name: "
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name: "
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patronymic" />
+
+    <TextView
+        android:id="@+id/tvPatr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="workExp" />
+
+    <TextView
+        android:id="@+id/tvWorkExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialty" />
+
+    <TextView
+        android:id="@+id/tvSpecialties"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <Button
+        android:id="@+id/bSpecialty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="UpdateSpecialties"/>
+
+    <Button
+        android:id="@+id/bUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Update"/>
+
+</LinearLayout>

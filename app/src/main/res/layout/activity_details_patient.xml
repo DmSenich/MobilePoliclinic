@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name: "
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name: "
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patronymic" />
+
+    <TextView
+        android:id="@+id/tvPatr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DateBirth" />
+
+    <TextView
+        android:id="@+id/tvDateBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Area" />
+
+    <TextView
+        android:id="@+id/tvArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City" />
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="House" />
+
+    <TextView
+        android:id="@+id/tvHouse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apartment" />
+
+    <TextView
+        android:id="@+id/tvApartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <!-- Добавьте здесь элементы для отображения остальных полей объекта Patient -->
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update" />
+
+</LinearLayout>

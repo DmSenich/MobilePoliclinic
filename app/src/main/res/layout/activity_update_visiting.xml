@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text=""
+        android:visibility="invisible" />
+    <TextView
+        android:id="@+id/tvDoctorId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:visibility="invisible" />
+    <TextView
+        android:id="@+id/tvPatientId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:visibility="invisible" />
+    <TextView
+        android:id="@+id/doctorFIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Doctor:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/patientFIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Patient:"
+        android:layout_below="@id/doctorFIO"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <DatePicker
+        android:id="@+id/etDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:layout_below="@id/patientFIO"
+        android:datePickerMode="spinner" />
+
+    <Button
+        android:id="@+id/btnChooseDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Doctor"
+        android:layout_below="@id/etDate"
+        android:layout_marginTop="16dp"
+        />
+
+    <Button
+        android:id="@+id/btnChoosePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Patient"
+        android:layout_below="@id/btnChooseDoctor"
+        android:layout_marginTop="8dp"
+        />
+
+    <Button
+        android:id="@+id/OK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@id/btnChoosePatient"
+        android:layout_marginTop="16dp"
+        />
+
+</RelativeLayout>
