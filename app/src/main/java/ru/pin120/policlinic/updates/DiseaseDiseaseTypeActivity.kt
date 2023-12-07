@@ -7,26 +7,26 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.R
-import ru.pin120.policlinic.adapters.DoctorAdapter
+import ru.pin120.policlinic.adapters.DiseaseTypeAdapter
 import ru.pin120.policlinic.adapters.PatientAdapter
-import ru.pin120.policlinic.controllers.DoctorController
+import ru.pin120.policlinic.controllers.DiseaseTypeController
 import ru.pin120.policlinic.controllers.PatientController
 
-class VisitingPatientActivity: ComponentActivity() {
+class DiseaseDiseaseTypeActivity: ComponentActivity() {
     private lateinit var mDBHelper: DatabaseHelper
-    private lateinit var patientController: PatientController
-    private lateinit var adapter: PatientAdapter
+    private lateinit var diseaseTypeController: DiseaseTypeController
+    private lateinit var adapter: DiseaseTypeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_list_unbutton)
 
         mDBHelper = DatabaseHelper(this)
-        patientController = PatientController(mDBHelper)
+        diseaseTypeController = DiseaseTypeController(mDBHelper)
 
-        val patients = patientController.getAllPatients()
+        val diseaseTypes = diseaseTypeController.getAllDiseaseTypes()
 
-        adapter = PatientAdapter(this, R.layout.adapter_item_patients, patients)
+        adapter = DiseaseTypeAdapter(this, R.layout.adapter_item_disease_types, diseaseTypes)
 
         val listView: ListView = findViewById(R.id.listView)
 
@@ -35,8 +35,8 @@ class VisitingPatientActivity: ComponentActivity() {
         listView.setOnItemClickListener { parent, view, position, id ->
             //adapter.toggleSelection(position)
             //val doctorId =
-            val patientId = view.findViewById<TextView>(R.id.id).text.toString().toLong()
-            intent.putExtra("patientId", patientId)
+            val diseaseTypeId = view.findViewById<TextView>(R.id.id).text.toString().toLong()
+            intent.putExtra("typeId", diseaseTypeId)
             setResult(Activity.RESULT_OK, intent)
             finish()
         }

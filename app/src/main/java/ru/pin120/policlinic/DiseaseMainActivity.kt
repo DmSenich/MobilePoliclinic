@@ -3,6 +3,7 @@ package ru.pin120.policlinic
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
@@ -26,7 +27,7 @@ class DiseaseMainActivity : ComponentActivity() {
         mDBHelper = DatabaseHelper(this)
         diseaseController = DiseaseController(mDBHelper)
 
-        visitingId = intent.getLongExtra("visitingId", -1)
+        visitingId = intent.getLongExtra("id", -1)
 
         val listView: ListView = findViewById(R.id.listView)
         val btnNew: Button = findViewById(R.id.bNew)
@@ -63,8 +64,23 @@ class DiseaseMainActivity : ComponentActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent()
+        intent.putExtra("id", visitingId)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+        return true
+    }
+
     override fun onDestroy() {
         mDBHelper.close()
         super.onDestroy()
+    }
+
+    private fun back(){
+//        val intent = Intent()
+//        intent.putExtra("id", visitingId)
+//        setResult(Activity.RESULT_OK, intent)
+//        finish()
     }
 }

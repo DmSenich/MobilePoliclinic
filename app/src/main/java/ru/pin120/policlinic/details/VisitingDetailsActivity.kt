@@ -1,11 +1,13 @@
 package ru.pin120.policlinic.details
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
+import ru.pin120.policlinic.DiseaseMainActivity
 import ru.pin120.policlinic.R
 import ru.pin120.policlinic.controllers.VisitingController
 import ru.pin120.policlinic.updates.VisitingUpdatesActivity
@@ -36,10 +38,10 @@ class VisitingDetailsActivity : ComponentActivity() {
 
         val btnUpdate: Button = findViewById(R.id.bUpdate)
         val btnDisease:Button = findViewById(R.id.bDiseases)
-        if (intent.extras?.getLong("id") != null) {
-            val id = intent.extras!!.getLong("id")
-
-        }
+//        if (intent.extras?.getLong("id") != null) {
+//            val id = intent.extras!!.getLong("id")
+//
+//        }
 
         btnUpdate.setOnClickListener {
             val intent = Intent(this@VisitingDetailsActivity, VisitingUpdatesActivity::class.java)
@@ -47,7 +49,7 @@ class VisitingDetailsActivity : ComponentActivity() {
             startActivityForResult(intent, 0)
         }
         btnDisease.setOnClickListener {
-            val intent = Intent(this@VisitingDetailsActivity, VisitingDiseasesActivity::class.java)
+            val intent = Intent(this@VisitingDetailsActivity, DiseaseMainActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)
         }
@@ -55,14 +57,17 @@ class VisitingDetailsActivity : ComponentActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val idTV: TextView = findViewById(R.id.id)
-        val doctorIdTV:TextView = findViewById(R.id.tvDoctorId)
-        val patientIdTV:TextView = findViewById(R.id.tvPatientId)
+        val idTV: TextView = findViewById(R.id.tvId)
+//        val doctorIdTV:TextView = findViewById(R.id.tvDoctorId)
+//        val patientIdTV:TextView = findViewById(R.id.tvPatientId)
         val doctorTV: TextView = findViewById(R.id.doctorFIO)
         val patientTV: TextView = findViewById(R.id.patientFIO)
         val dateTV: TextView = findViewById(R.id.tvDate)
+        if (resultCode == Activity.RESULT_OK){
+            intent.putExtra("id", data!!.getLongExtra("id", -1))
+            setVisitingView(idTV, doctorTV, patientTV, dateTV)
+        }
 
-        setVisitingView(idTV, doctorTV, patientTV, dateTV)
     }
 
     private fun setVisitingView(
@@ -71,9 +76,9 @@ class VisitingDetailsActivity : ComponentActivity() {
         patientTV: TextView,
         dateTV: TextView
     ) {
-        if (intent.extras?.getLong("id") != null) {
-            idTV.text = intent.extras?.getLong("id").toString()
+        if (intent.extras?.getLong("id") != -1L) {
             val id = intent.extras!!.getLong("id")
+            idTV.text = id.toString()
             val visiting = visitingController.getVisitingById(id!!)
             if (visiting != null) {
                 doctorTV.text = visiting.doctor!!.lastName + " " + visiting.doctor!!.firstName + " " + visiting.doctor!!.patr

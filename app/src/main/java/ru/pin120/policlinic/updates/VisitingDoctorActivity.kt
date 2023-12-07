@@ -19,7 +19,7 @@ class VisitingDoctorActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_persons)
+        setContentView(R.layout.activity_main_list_unbutton)
 
         mDBHelper = DatabaseHelper(this)
         doctorController = DoctorController(mDBHelper)
@@ -48,11 +48,13 @@ class VisitingDoctorActivity : ComponentActivity() {
 //        }
     }
 
+
 //    override fun onBackPressed() {
 //        val selectedDoctorIds = adapter.getSelectedDoctors().mapNotNull { it.id }.toLongArray()
 //        val resultIntent = Intent()
 //        resultIntent.putExtra("selectedDoctorIds", selectedDoctorIds)
 //        setResult(Activity.RESULT_OK, resultIntent)
 //        finish()
+//        super.onBackPressed()
 //    }
 }

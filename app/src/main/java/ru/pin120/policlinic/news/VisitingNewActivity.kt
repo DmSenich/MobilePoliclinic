@@ -97,7 +97,7 @@ class VisitingNewActivity : ComponentActivity() {
         val doctorTV: TextView = findViewById(R.id.doctorFIO)
         val patientTV: TextView = findViewById(R.id.patientFIO)
         val dateTV: DatePicker = findViewById(R.id.etDate)
-        if (resultCode == Activity.RESULT_OK || resultCode == Activity.RESULT_CANCELED) {
+        if (resultCode == Activity.RESULT_OK) {
             val doctorId = data!!.getLongExtra("doctorId", -1)
             if(doctorId != -1L){
                 intent.putExtra("doctorId", doctorId)

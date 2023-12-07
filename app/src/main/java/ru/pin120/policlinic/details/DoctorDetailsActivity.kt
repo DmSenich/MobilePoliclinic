@@ -58,7 +58,7 @@ class DoctorDetailsActivity : ComponentActivity() {
         val tvPatr: TextView = findViewById(R.id.tvPatr)
         val tvWorkExp: TextView = findViewById(R.id.tvWorkExp)
         val tvSpecialties:TextView = findViewById(R.id.tvSpecialties)
-
+        intent.putExtra("id", data!!.getLongExtra("id", -1))
         if (resultCode == Activity.RESULT_OK || resultCode == Activity.RESULT_CANCELED) {
             setDoctorView(tvId, tvLastName, tvFirstName, tvPatr, tvWorkExp, tvSpecialties)
         }
@@ -72,7 +72,7 @@ class DoctorDetailsActivity : ComponentActivity() {
         tvWorkExp: TextView,
         tvSpecialties:TextView
     ) {
-        if (intent.extras?.getLong("id") != null) {
+        if (intent.extras?.getLong("id") != -1L) {
             tvId.text = intent.extras?.getLong("id").toString()
             val id = intent.extras!!.getLong("id")
             val doctor = doctorController.getDoctorById(id)
