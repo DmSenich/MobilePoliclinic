@@ -3,6 +3,7 @@ package ru.pin120.policlinic.details
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -32,12 +33,13 @@ class PatientDetailsActivity : ComponentActivity() {
         val tvFirstName: TextView = findViewById(R.id.tvFirstName)
         val tvPatr: TextView = findViewById(R.id.tvPatr)
         val tvDateBirth: TextView = findViewById(R.id.tvDateBirth)
-        val tvArea: TextView = findViewById(R.id.tvArea)
-        val tvCity: TextView = findViewById(R.id.tvCity)
-        val tvHouse: TextView = findViewById(R.id.tvHouse)
-        val tvApartment: TextView = findViewById(R.id.tvApartment)
+        val tvAdress:TextView = findViewById(R.id.tvAdress)
+//        val tvArea: TextView = findViewById(R.id.tvArea)
+//        val tvCity: TextView = findViewById(R.id.tvCity)
+//        val tvHouse: TextView = findViewById(R.id.tvHouse)
+//        val tvApartment: TextView = findViewById(R.id.tvApartment)
 
-        setPatientView(tvId, tvLastName, tvFirstName, tvPatr, tvDateBirth, tvArea, tvCity, tvHouse, tvApartment)
+        setPatientView(tvId, tvLastName, tvFirstName, tvPatr, tvDateBirth, tvAdress)
 
         btnUpdate.setOnClickListener {
             val intent = Intent(this@PatientDetailsActivity, PatientUpdateActivity::class.java)
@@ -53,13 +55,14 @@ class PatientDetailsActivity : ComponentActivity() {
         val tvFirstName: TextView = findViewById(R.id.tvFirstName)
         val tvPatr: TextView = findViewById(R.id.tvPatr)
         val tvDateBirth: TextView = findViewById(R.id.tvDateBirth)
-        val tvArea: TextView = findViewById(R.id.tvArea)
-        val tvCity: TextView = findViewById(R.id.tvCity)
-        val tvHouse: TextView = findViewById(R.id.tvHouse)
-        val tvApartment: TextView = findViewById(R.id.tvApartment)
+        val tvAdress:TextView = findViewById(R.id.tvAdress)
+//        val tvArea: TextView = findViewById(R.id.tvArea)
+//        val tvCity: TextView = findViewById(R.id.tvCity)
+//        val tvHouse: TextView = findViewById(R.id.tvHouse)
+//        val tvApartment: TextView = findViewById(R.id.tvApartment)
 
         if (resultCode == Activity.RESULT_OK) {
-            setPatientView(tvId, tvLastName, tvFirstName, tvPatr, tvDateBirth, tvArea, tvCity, tvHouse, tvApartment)
+            setPatientView(tvId, tvLastName, tvFirstName, tvPatr, tvDateBirth, tvAdress)
         }
     }
 
@@ -69,10 +72,11 @@ class PatientDetailsActivity : ComponentActivity() {
         tvFirstName: TextView,
         tvPatr: TextView,
         tvDateBirth: TextView,
-        tvArea: TextView,
-        tvCity: TextView,
-        tvHouse: TextView,
-        tvApartment: TextView
+        tvAdress:TextView
+//        tvArea: TextView,
+//        tvCity: TextView,
+//        tvHouse: TextView,
+//        tvApartment: TextView
     ) {
         if (intent.extras?.getLong("id") != null) {
             tvId.text = intent.extras?.getLong("id").toString()
@@ -84,15 +88,18 @@ class PatientDetailsActivity : ComponentActivity() {
 
             tvDateBirth.text =
                 SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(patient.dateBirth)
-            tvArea.text = patient.area
-            tvCity.text = patient.city
-            tvHouse.text = patient.house
-            if(patient.apartment == 0L){
-                tvApartment.text = ""
-            }
-            else{
-                tvApartment.text = patient.apartment.toString()
+            tvAdress.text = patient.area + ", " + patient.city + ", " + patient.house
+//            tvCity.text = patient.city
+//            tvHouse.text = patient.house
+            if(patient.apartment != 0L){
+                tvAdress.text = tvAdress.text.toString()+", "+patient.apartment.toString()
             }
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

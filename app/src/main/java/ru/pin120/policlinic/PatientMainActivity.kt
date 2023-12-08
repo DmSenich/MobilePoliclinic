@@ -72,8 +72,6 @@ class PatientMainActivity : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            mDBHelper = DatabaseHelper(this)
-            patientController = PatientController(mDBHelper)
             val patients = patientController.getAllPatients()
 
             val adapter = PatientAdapter(this, R.layout.adapter_item_patients, patients)

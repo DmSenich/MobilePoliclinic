@@ -2,6 +2,7 @@ package ru.pin120.policlinic.updates
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -54,6 +55,12 @@ class DiseaseTypeUpdateActivity : ComponentActivity() {
                 finish()
             }
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
 

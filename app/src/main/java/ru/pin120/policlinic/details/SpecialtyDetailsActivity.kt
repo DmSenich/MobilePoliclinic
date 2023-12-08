@@ -3,6 +3,7 @@ package ru.pin120.policlinic.details
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -15,7 +16,7 @@ import ru.pin120.policlinic.updates.SpecialtyUpdateActivity
 class SpecialtyDetailsActivity : ComponentActivity() {
     private lateinit var mDBHelper:DatabaseHelper
     private lateinit var specialtyController: SpecialtyController
-
+    private var specialtyId = -1L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_specialty)
@@ -48,10 +49,17 @@ class SpecialtyDetailsActivity : ComponentActivity() {
     }
     private fun setSpecialtyView(tvId:TextView, tvName:TextView){
         if(intent.extras?.getLong("id") != null){
-            tvId.text = intent.extras?.getLong("id").toString()
-            val id = intent.extras!!.getLong("id");
-            val specialty = specialtyController.getSpecialtyById(id)
+            specialtyId = intent.extras?.getLong("id")!!
+            tvId.text = specialtyId.toString()
+            val specialty = specialtyController.getSpecialtyById(specialtyId)
             tvName.text = specialty!!.name
         }
+    }
+
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

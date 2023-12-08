@@ -2,6 +2,7 @@ package ru.pin120.policlinic.news
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -29,6 +30,14 @@ class DiseaseTypeNewActivity : ComponentActivity() {
             diseaseType.name = etName.text.toString().trim()
             try {
                 diseaseTypeController.addDiseaseType(diseaseType)
+                intent.putExtra("isNew", true)
+                setResult(Activity.RESULT_OK, intent)
+                Toast.makeText(
+                    this,
+                    "Запись создана\n Name: ${diseaseType.name}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
@@ -36,14 +45,13 @@ class DiseaseTypeNewActivity : ComponentActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            intent.putExtra("isNew", true)
-            setResult(Activity.RESULT_OK, intent)
-            Toast.makeText(
-                this,
-                "Запись создана\n Name: ${diseaseType.name}",
-                Toast.LENGTH_SHORT
-            ).show()
-            finish()
+
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

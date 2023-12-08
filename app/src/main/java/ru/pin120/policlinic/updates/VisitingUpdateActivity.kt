@@ -3,12 +3,12 @@ package ru.pin120.policlinic.updates
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import org.w3c.dom.Text
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.R
 import ru.pin120.policlinic.controllers.DoctorController
@@ -18,13 +18,13 @@ import ru.pin120.policlinic.models.Visiting
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class VisitingUpdatesActivity : ComponentActivity() {
+class VisitingUpdateActivity : ComponentActivity() {
 
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var visitingController: VisitingController
     private lateinit var doctorController:DoctorController
     private lateinit var patientController: PatientController
-
+    private var visitingId = -1L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_visiting)
@@ -47,9 +47,9 @@ class VisitingUpdatesActivity : ComponentActivity() {
         val btnSave: Button = findViewById(R.id.OK)
 
         if (intent.extras?.getLong("id") != null) {
-            val id = intent.extras!!.getLong("id")
-            val visiting = visitingController.getVisitingById(id)
-            idTV.text = id.toString()
+            visitingId = intent.extras!!.getLong("id")
+            val visiting = visitingController.getVisitingById(visitingId)
+            idTV.text = visitingId.toString()
             if(intent.extras?.getLong("doctorId") != 0L){
                 val doctorId = intent.extras?.getLong("doctorId")
                 val doctor = doctorController.getDoctorById(doctorId!!)
@@ -74,12 +74,12 @@ class VisitingUpdatesActivity : ComponentActivity() {
             etDate.updateDate(year,month,day)
         }
         btnDoctor.setOnClickListener {
-            intent = Intent(this@VisitingUpdatesActivity, VisitingDoctorActivity::class.java)
+            intent = Intent(this@VisitingUpdateActivity, VisitingDoctorActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)
         }
         btnPatient.setOnClickListener {
-            intent = Intent(this@VisitingUpdatesActivity, VisitingPatientActivity::class.java)
+            intent = Intent(this@VisitingUpdateActivity, VisitingPatientActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)
         }
@@ -156,5 +156,19 @@ class VisitingUpdatesActivity : ComponentActivity() {
                 patientTV.text = patient!!.lastName + " " + patient!!.firstName + " " + patient!!.patr
             }
         }
+    }
+    private fun back(){
+        val intent = Intent()
+        intent.putExtra("id", visitingId)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        back()
+        return true
+    }
+    override fun onBackPressed() {
+        back()
+        super.onBackPressed()
     }
 }

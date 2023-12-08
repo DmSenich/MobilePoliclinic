@@ -3,6 +3,7 @@ package ru.pin120.policlinic.news
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -37,10 +38,16 @@ class DoctorNewActivity : ComponentActivity() {
 
 
         btnOK.setOnClickListener {
+            var lastName:String? = etLastName.text.toString().trim()
+            var firstName:String? = etFirstName.text.toString().trim()
+            var patr:String? = etPatr.text.toString().trim()
+            if(lastName == "") lastName = null
+            if(firstName =="") firstName = null
+            if(patr == "") patr = null
             val doctor = Doctor(
-                lastName = etLastName.text.toString().trim(),
-                firstName = etFirstName.text.toString().trim(),
-                patr = etPatr.text.toString().trim(),
+                lastName = lastName,
+                firstName = firstName,
+                patr = patr,
                 workExp = etWorkExp.text.toString().toIntOrNull() ?: 0)
             try {
                 doctorController.addDoctor(doctor)
@@ -50,17 +57,22 @@ class DoctorNewActivity : ComponentActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 setResult(Activity.RESULT_OK, Intent().putExtra("isNew", true))
+                finish()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
                     "Exception of adding record",
                     Toast.LENGTH_SHORT
                 ).show()
-                setResult(Activity.RESULT_CANCELED)
-            } finally {
-                finish()
+//                setResult(Activity.RESULT_CANCELED)
             }
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 }

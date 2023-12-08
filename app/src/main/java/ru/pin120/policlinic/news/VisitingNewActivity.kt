@@ -16,7 +16,6 @@ import ru.pin120.policlinic.controllers.VisitingController
 import ru.pin120.policlinic.models.Visiting
 import ru.pin120.policlinic.updates.VisitingDoctorActivity
 import ru.pin120.policlinic.updates.VisitingPatientActivity
-import ru.pin120.policlinic.updates.VisitingUpdatesActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -56,8 +55,10 @@ class VisitingNewActivity : ComponentActivity() {
         }
         btnSave.setOnClickListener {
             val visiting = Visiting(null,null,null,null, ArrayList())
-            val doctorId = doctorIdTV.text.toString().toLongOrNull()
-            val patientId = patientIdTV.text.toString().toLongOrNull()
+            var doctorId = doctorIdTV.text.toString().toLongOrNull()
+            var patientId = patientIdTV.text.toString().toLongOrNull()
+            if(doctorId == null) doctorId = 0
+            if(patientId == null) patientId = 0
             val doctor = doctorController.getDoctorById(doctorId!!)
             val patient = patientController.getPatientById(patientId!!)
             visiting.doctor = doctor
@@ -78,15 +79,14 @@ class VisitingNewActivity : ComponentActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 setResult(Activity.RESULT_OK, Intent().putExtra("isNew", true))
+                finish()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
                     "Ошибка при добавлении записи",
                     Toast.LENGTH_SHORT
                 ).show()
-                setResult(Activity.RESULT_CANCELED)
-            } finally {
-                finish()
+                //setResult(Activity.RESULT_CANCELED)
             }
         }
     }

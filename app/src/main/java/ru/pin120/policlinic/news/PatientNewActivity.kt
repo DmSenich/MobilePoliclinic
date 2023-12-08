@@ -2,6 +2,7 @@ package ru.pin120.policlinic.news
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -37,24 +38,44 @@ class PatientNewActivity : ComponentActivity() {
 
         btnOK.setOnClickListener {
             val patient = Patient(
-                null, "", "", null, Date(), "", "", "", null
+                null, null, null, null, Date(), null, null, null, null
             )
-            patient.lastName = etLastName.text.toString().trim()
-            patient.firstName = etFirstName.text.toString().trim()
-            patient.patr = etPatr.text.toString().trim()
+            var lastName:String? = etLastName.text.toString().trim()
+            var firstName:String? = etFirstName.text.toString().trim()
+            var patr:String? = etPatr.text.toString().trim()
+            var area:String? = etArea.text.toString().trim()
+            var city:String? = etCity.text.toString().trim()
+            var house:String? = etHouse.text.toString().trim()
+            if (lastName == "") lastName = null
+            if (firstName == "") firstName = null
+            if (patr == "") patr = null
+            if (area == "") area = null
+            if (city == "") city = null
+            if (house == "") house = null
+            patient.lastName = lastName
+            patient.firstName = firstName
+            patient.patr = patr
             val year = etDateBirth.year + 1900
             val month = etDateBirth.month
             val day = etDateBirth.dayOfMonth
             val selectedDate = "$year-${month + 1}-$day"
             patient.dateBirth = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                 .parse(selectedDate)!!
-            patient.area = etArea.text.toString().trim()
-            patient.city = etCity.text.toString().trim()
-            patient.house = etHouse.text.toString().trim()
+            patient.area = area
+            patient.city = city
+            patient.house = house
             patient.apartment =  etApartment.text.toString().toLongOrNull()
 
             try {
                 patientController.addPatient(patient)
+                intent.putExtra("isNew", true)
+                setResult(Activity.RESULT_OK, intent)
+                Toast.makeText(
+                    this,
+                    "Record created\n Name: ${patient.lastName} ${patient.firstName}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
@@ -63,15 +84,13 @@ class PatientNewActivity : ComponentActivity() {
                 ).show()
             }
 
-            intent.putExtra("isNew", true)
-            setResult(Activity.RESULT_OK, intent)
-            Toast.makeText(
-                this,
-                "Record created\n Name: ${patient.lastName} ${patient.firstName}",
-                Toast.LENGTH_SHORT
-            ).show()
-            finish()
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
 

@@ -43,8 +43,11 @@ class DiseaseDetailsActivity  : ComponentActivity(){
         val idTV: TextView = findViewById(R.id.tvId)
         val typeTV :TextView = findViewById(R.id.type)
         val descriptionTV:TextView = findViewById(R.id.description)
-        intent.putExtra("id", data!!.getLongExtra("id", -1))
-        setDiseaseView(idTV, typeTV, descriptionTV)
+        if(RESULT_OK == resultCode){
+            intent.putExtra("id", data!!.getLongExtra("id", -1))
+            setDiseaseView(idTV, typeTV, descriptionTV)
+        }
+
     }
 
     private fun setDiseaseView(

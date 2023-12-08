@@ -3,6 +3,7 @@ package ru.pin120.policlinic.news
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -58,27 +59,39 @@ class DiseaseNewActivity : ComponentActivity() {
         }
         btnSave.setOnClickListener {
             val disease = Disease(null,null,null,null)
-            val description = etDescription.text.toString()
-
-            val diseaseType = diseaseTypeController.getDiseaseTypeById(tvTypeId.text.toString().toLong())
+            val description = etDescription.text.toString().trim()
+            var diseaseTypeId = 0L
+            if(tvTypeId.text.toString() == ""){
+                diseaseTypeId = 0L
+            }
+            else{
+                diseaseTypeId = tvTypeId.text.toString().toLong()
+            }
+            val diseaseType = diseaseTypeController.getDiseaseTypeById(diseaseTypeId)
             val visiting = visitingController.getVisitingById(visitingId)
+
             if (diseaseType != null) {
                 disease.description = description
                 disease.diseaseType = diseaseType
-                try {
-                    if (visiting != null) {
-                        disease.visiting = visiting
-                        diseaseController.addDisease(disease)
-                        Toast.makeText(this, "Болезнь добавлена", Toast.LENGTH_SHORT).show()
-                        setResult(Activity.RESULT_OK)
-                    } else {
-                        Toast.makeText(this, "Ошибка: посещение не найдено", Toast.LENGTH_SHORT).show()
-                    }
-                } catch (ex: Exception) {
-                    Toast.makeText(this, "Ошибка при сохранении болезни", Toast.LENGTH_SHORT).show()
+                if(description == null || description == ""){
+                    Toast.makeText(this, "Введите описание", Toast.LENGTH_SHORT).show()
                 }
-                finally {
-                    finish()
+                else{
+                    try {
+                        if (visiting != null) {
+                            disease.visiting = visiting
+                            diseaseController.addDisease(disease)
+                            Toast.makeText(this, "Болезнь добавлена", Toast.LENGTH_SHORT).show()
+                            setResult(Activity.RESULT_OK)
+                        } else {
+                            Toast.makeText(this, "Ошибка: посещение не найдено", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (ex: Exception) {
+                        Toast.makeText(this, "Ошибка при сохранении болезни", Toast.LENGTH_SHORT).show()
+                    }
+                    finally {
+                        finish()
+                    }
                 }
             } else {
                 Toast.makeText(this, "Выберите тип болезни", Toast.LENGTH_SHORT).show()
@@ -114,5 +127,20 @@ class DiseaseNewActivity : ComponentActivity() {
             tvType.text = type?.name
 
         }
+    }
+    private fun back(){
+        val intent = Intent()
+        intent.putExtra("id", visitingId)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        back()
+        return true
+    }
+
+    override fun onBackPressed() {
+        back()
+        super.onBackPressed()
     }
 }

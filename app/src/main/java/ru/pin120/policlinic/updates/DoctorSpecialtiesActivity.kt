@@ -1,6 +1,7 @@
 package ru.pin120.policlinic.updates
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
@@ -50,13 +51,19 @@ class DoctorSpecialtiesActivity : ComponentActivity() {
         }
 
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    private fun back(){
+        val intent = Intent()
         intent.putExtra("id", doctorId)
         setResult(Activity.RESULT_OK, intent)
         finish()
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        back()
         return true
     }
-
+    override fun onBackPressed() {
+        back()
+        super.onBackPressed()
+    }
 
 }

@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name: "
+        android:text="Фамилия: "
         android:paddingTop="8dp" />
 
     <TextView
@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name: "
+        android:text="Имя: "
         android:paddingTop="8dp" />
 
     <TextView
@@ -38,7 +38,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patronymic" />
+        android:text="Отчество: " />
 
     <TextView
         android:id="@+id/tvPatr"
@@ -48,7 +48,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="workExp" />
+        android:text="Опыт работы: " />
 
     <TextView
         android:id="@+id/tvWorkExp"
@@ -58,7 +58,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialty" />
+        android:text="Специальности: " />
 
     <TextView
         android:id="@+id/tvSpecialties"
@@ -70,13 +70,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="UpdateSpecialties"/>
+        android:layout_gravity="right"
+        android:text="Обновить специализацию"/>
 
     <Button
         android:id="@+id/bUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Update"/>
+        android:layout_gravity="right"
+        android:text="Обновить профиль"/>
 
 </LinearLayout>

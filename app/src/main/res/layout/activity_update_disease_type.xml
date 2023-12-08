@@ -42,24 +42,21 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="81dp"
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/OK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="10dp"
+        android:text="Сохранить" />
 
-        <Button
-            android:id="@+id/OK"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_weight="1"
-            android:text="OK" />
+    <!--    <Button-->
+<!--        android:id="@+id/CANCEL"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="CANCEL" />-->
 
-        <Button
-            android:id="@+id/CANCEL"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_weight="1"
-            android:text="CANCEL" />
-    </LinearLayout>
 
 </LinearLayout>

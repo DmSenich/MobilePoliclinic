@@ -3,6 +3,7 @@ package ru.pin120.policlinic.details
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -19,6 +20,7 @@ class DoctorDetailsActivity : ComponentActivity() {
 
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var doctorController: DoctorController
+    private var doctorId = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,9 +75,9 @@ class DoctorDetailsActivity : ComponentActivity() {
         tvSpecialties:TextView
     ) {
         if (intent.extras?.getLong("id") != -1L) {
-            tvId.text = intent.extras?.getLong("id").toString()
-            val id = intent.extras!!.getLong("id")
-            val doctor = doctorController.getDoctorById(id)
+            doctorId = intent.extras?.getLong("id")!!
+            tvId.text = doctorId.toString()
+            val doctor = doctorController.getDoctorById(doctorId)
             if (doctor != null) {
                 tvLastName.text = doctor.lastName
                 tvFirstName.text = doctor.firstName
@@ -87,5 +89,11 @@ class DoctorDetailsActivity : ComponentActivity() {
                 tvSpecialties.text =sBuilder.removeSuffix(",").toString()
             }
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

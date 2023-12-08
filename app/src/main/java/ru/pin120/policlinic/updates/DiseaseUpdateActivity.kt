@@ -128,12 +128,18 @@ class DiseaseUpdateActivity: ComponentActivity() {
 
         }
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    private fun back(){
         val intent = Intent()
         intent.putExtra("id", diseaseId)
-        setResult(RESULT_CANCELED, intent)
+        setResult(RESULT_OK, intent)
         finish()
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        back()
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        back()
         return true
     }
 }

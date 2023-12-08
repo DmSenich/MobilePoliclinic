@@ -18,7 +18,7 @@ class DiseaseTypeMainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_disease_types)
+        setContentView(R.layout.activity_main_list)
 
         mDBHelper = DatabaseHelper(this)
         diseaseTypeController = DiseaseTypeController(mDBHelper)
@@ -49,8 +49,6 @@ class DiseaseTypeMainActivity : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            mDBHelper = DatabaseHelper(this)
-            diseaseTypeController = DiseaseTypeController(mDBHelper)
             val diseaseTypes = diseaseTypeController.getAllDiseaseTypes()
 
             val adapter = DiseaseTypeAdapter(this, R.layout.adapter_item_disease_types, diseaseTypes)

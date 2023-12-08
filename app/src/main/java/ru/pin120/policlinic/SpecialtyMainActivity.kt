@@ -56,17 +56,12 @@ class SpecialtyMainActivity : ComponentActivity() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        if(resultCode == Activity.RESULT_OK){
-            mDBHelper = DatabaseHelper(this)
-            specialtyController = SpecialtyController(mDBHelper)
-            val specialties = specialtyController.getAllSpecialties()
-
-            val adapter = SpecialtyAdapter(this, R.layout.adapter_item_specialties, specialties)
-            val listView: ListView = findViewById(R.id.listView)
-            listView.adapter = adapter
-        }
+        val specialties = specialtyController.getAllSpecialties()
+        val adapter = SpecialtyAdapter(this, R.layout.adapter_item_specialties, specialties)
+        val listView: ListView = findViewById(R.id.listView)
+        listView.adapter = adapter
     }
+
     override fun onDestroy() {
         mDBHelper.close()
         super.onDestroy()

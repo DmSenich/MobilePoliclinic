@@ -10,7 +10,7 @@ import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.DiseaseMainActivity
 import ru.pin120.policlinic.R
 import ru.pin120.policlinic.controllers.VisitingController
-import ru.pin120.policlinic.updates.VisitingUpdatesActivity
+import ru.pin120.policlinic.updates.VisitingUpdateActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -44,7 +44,7 @@ class VisitingDetailsActivity : ComponentActivity() {
 //        }
 
         btnUpdate.setOnClickListener {
-            val intent = Intent(this@VisitingDetailsActivity, VisitingUpdatesActivity::class.java)
+            val intent = Intent(this@VisitingDetailsActivity, VisitingUpdateActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)
         }

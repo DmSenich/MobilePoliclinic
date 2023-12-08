@@ -3,6 +3,7 @@ package ru.pin120.policlinic.updates
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -23,7 +24,7 @@ import java.util.Locale
 class PatientUpdateActivity : ComponentActivity() {
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var patientController: PatientController
-
+    private var patientId = -1L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_patient)
@@ -42,9 +43,9 @@ class PatientUpdateActivity : ComponentActivity() {
         val etApartment: EditText = findViewById(R.id.etApartment)
 
         if (intent.extras?.getLong("id") != null) {
-            tvId.text = intent.extras?.getLong("id").toString()
-            val id = intent.extras!!.getLong("id")
-            val patient = patientController.getPatientById(id)
+            patientId = intent.extras?.getLong("id")!!
+            tvId.text = patientId.toString()
+            val patient = patientController.getPatientById(patientId)
             etLastName.setText(patient!!.lastName)
             etFirstName.setText(patient.firstName)
             etPatr.setText(patient.patr ?: "")
@@ -70,7 +71,7 @@ class PatientUpdateActivity : ComponentActivity() {
             patient.lastName = etLastName.text.toString().trim()
             patient.firstName = etFirstName.text.toString().trim()
             patient.patr = etPatr.text.toString().trim()
-            val year = etDateBirth.year + 1900
+            val year = etDateBirth.year
             val month = etDateBirth.month
             val day = etDateBirth.dayOfMonth
             val selectedDate = "$year-${month + 1}-$day"
@@ -99,5 +100,19 @@ class PatientUpdateActivity : ComponentActivity() {
                 finish()
             }
         }
+    }
+    private fun back(){
+        val intent = Intent()
+        intent.putExtra("id", patientId)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        back()
+        return true
+    }
+    override fun onBackPressed() {
+        back()
+        super.onBackPressed()
     }
 }

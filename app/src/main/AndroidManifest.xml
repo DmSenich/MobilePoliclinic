@@ -181,7 +181,7 @@
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
                 android:value=".VisitingMainActivity"></meta-data>
         </activity>
-        <activity android:name=".updates.VisitingUpdatesActivity"
+        <activity android:name=".updates.VisitingUpdateActivity"
             android:exported="false"
             android:label="@string/visiting"
             android:parentActivityName=".details.VisitingDetailsActivity"

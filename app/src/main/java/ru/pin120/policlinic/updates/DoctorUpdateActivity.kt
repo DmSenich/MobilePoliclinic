@@ -3,6 +3,7 @@ package ru.pin120.policlinic.updates
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,7 +19,7 @@ class DoctorUpdateActivity : ComponentActivity() {
 
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var doctorController: DoctorController
-
+    private var doctorId = -1L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_doctor)
@@ -34,8 +35,8 @@ class DoctorUpdateActivity : ComponentActivity() {
         val btnOK: Button = findViewById(R.id.OK)
 
         if (intent.extras?.getLong("id") != null) {
-            val id = intent.extras!!.getLong("id")
-            val doctor = doctorController.getDoctorById(id)
+            doctorId = intent.extras?.getLong("id")!!
+            val doctor = doctorController.getDoctorById(doctorId)
             if (doctor != null) {
                 tvId.setText(doctor.id.toString())
                 etLastName.setText(doctor.lastName)
@@ -72,6 +73,20 @@ class DoctorUpdateActivity : ComponentActivity() {
                 finish()
             }
         }
+    }
+    private fun back(){
+        val intent = Intent()
+        intent.putExtra("id", doctorId)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        back()
+        return true
+    }
+    override fun onBackPressed() {
+        back()
+        super.onBackPressed()
     }
 
 }

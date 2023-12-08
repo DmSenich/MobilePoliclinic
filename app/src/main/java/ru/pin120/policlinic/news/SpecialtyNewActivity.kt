@@ -3,6 +3,7 @@ package ru.pin120.policlinic.news
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -31,6 +32,14 @@ class SpecialtyNewActivity : ComponentActivity() {
             specialty.name = etName.text.toString().trim()
             try{
                 specialtyController.addSpecialty(specialty)
+                intent.putExtra("isNew", true)
+                setResult(Activity.RESULT_OK, intent)
+                Toast.makeText(
+                    this,
+                    "Запись создана\n Name: ${specialty.name}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
             }
             catch (ex:Exception){Toast.makeText(
                 this,
@@ -40,14 +49,13 @@ class SpecialtyNewActivity : ComponentActivity() {
             }
 //            val resintent = Intent()
 //            resintent.putExtra("id", specialty.id)
-            intent.putExtra("isNew", true)
-            setResult(Activity.RESULT_OK, intent)
-            Toast.makeText(
-                this,
-                "Запись создана\n Name: ${specialty.name}",
-                Toast.LENGTH_SHORT
-            ).show()
-            finish()
+
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

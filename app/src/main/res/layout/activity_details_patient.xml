@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name: "
+        android:text="Фамилия: "
         android:paddingTop="8dp" />
 
     <TextView
@@ -27,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name: "
+        android:text="Имя: "
         android:paddingTop="8dp" />
 
     <TextView
@@ -39,7 +39,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patronymic" />
+        android:text="Отчество:" />
 
     <TextView
         android:id="@+id/tvPatr"
@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DateBirth" />
+        android:text="Дата рождения:" />
 
     <TextView
         android:id="@+id/tvDateBirth"
@@ -60,51 +60,52 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Area" />
+        android:text="Адрес:" />
 
     <TextView
-        android:id="@+id/tvArea"
+        android:id="@+id/tvAdress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="City" />-->
 
-    <TextView
-        android:id="@+id/tvCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvCity"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="House" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="House" />-->
 
-    <TextView
-        android:id="@+id/tvHouse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apartment" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvHouse"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text=""/>-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Apartment" />-->
 
-    <TextView
-        android:id="@+id/tvApartment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
-    <!-- Добавьте здесь элементы для отображения остальных полей объекта Patient -->
+<!--    <TextView-->
+<!--        android:id="@+id/tvApartment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="" />-->
+<!--    &lt;!&ndash; Добавьте здесь элементы для отображения остальных полей объекта Patient &ndash;&gt;-->
 
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update" />
+        android:layout_gravity="right"
+        android:text="Обновить" />
 
 </LinearLayout>

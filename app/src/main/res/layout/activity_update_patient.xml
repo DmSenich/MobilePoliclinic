@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name" />
+        android:text="Фамилия:" />
 
     <EditText
         android:id="@+id/etLastName"
@@ -27,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name" />
+        android:text="Имя:" />
 
     <EditText
         android:id="@+id/etFirstName"
@@ -38,7 +38,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patronymic" />
+        android:text="Отчество:" />
 
     <EditText
         android:id="@+id/etPatr"
@@ -48,19 +48,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DateBirth" />
+        android:text="Дата рождения:" />
 
     <DatePicker
         android:id="@+id/etDateBirth"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="121dp"
         android:calendarViewShown="false"
         android:datePickerMode="spinner" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Area" />
+        android:text="Область:" />
 
     <EditText
         android:id="@+id/etArea"
@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="City" />
+        android:text="Город:" />
 
     <EditText
         android:id="@+id/etCity"
@@ -82,7 +82,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="House" />
+        android:text="Дом" />
 
     <EditText
         android:id="@+id/etHouse"
@@ -92,19 +92,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apartment" />
+        android:text="Квартира" />
 
     <EditText
         android:id="@+id/etApartment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number" />
-    <!-- Добавьте здесь элементы для остальных полей объекта Patient -->
 
     <Button
         android:id="@+id/btnOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update" />
+        android:layout_gravity="right"
+        android:text="Сохранить" />
 
 </LinearLayout>

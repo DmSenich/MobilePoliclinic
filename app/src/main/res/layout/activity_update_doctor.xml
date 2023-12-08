@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name" />
+        android:text="Фамилия:" />
 
     <EditText
         android:id="@+id/etLastName"
@@ -27,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name" />
+        android:text="Имя:" />
 
     <EditText
         android:id="@+id/etFirstName"
@@ -38,7 +38,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Patronymic" />
+        android:text="Отчество:" />
 
     <EditText
         android:id="@+id/etPatr"
@@ -49,7 +49,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WorkExp" />
+        android:text="Опыт работы:" />
 
     <EditText
         android:id="@+id/etWorkExp"
@@ -61,6 +61,7 @@
         android:id="@+id/OK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update" />
+        android:text="Сохранить"
+        android:layout_gravity="right"/>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package ru.pin120.policlinic.details
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -49,6 +50,12 @@ class DiseaseTypeDetailsActivity : ComponentActivity() {
             val diseaseType = diseaseTypeController.getDiseaseTypeById(id)
             tvName.text = diseaseType!!.name
         }
+    }
+    override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
+        return super.onMenuItemSelected(featureId, item)
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 }
