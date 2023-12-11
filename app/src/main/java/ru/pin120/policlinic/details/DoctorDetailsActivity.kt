@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import kotlinx.coroutines.joinAll
 import org.w3c.dom.Text
@@ -37,6 +38,7 @@ class DoctorDetailsActivity : ComponentActivity() {
         val tvSpecialties:TextView = findViewById(R.id.tvSpecialties)
         val btnUpdate: Button = findViewById(R.id.bUpdate)
         val btnUpSpecialties :Button = findViewById(R.id.bSpecialty)
+        val btnDelete:Button = findViewById(R.id.bDelete)
 
         setDoctorView(tvId, tvLastName, tvFirstName, tvPatr, tvWorkExp, tvSpecialties)
 
@@ -49,6 +51,17 @@ class DoctorDetailsActivity : ComponentActivity() {
             val intent = Intent(this@DoctorDetailsActivity, DoctorSpecialtiesActivity::class.java)
             intent.putExtra("id", tvId.text.toString().toLong())
             startActivityForResult(intent, 0)
+        }
+        btnDelete.setOnClickListener {
+            try {
+                doctorController.deleteDoctor(doctorId)
+                val intent =Intent()
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            catch (ex:Exception){
+                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

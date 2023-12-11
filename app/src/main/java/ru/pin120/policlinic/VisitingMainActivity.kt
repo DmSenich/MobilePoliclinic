@@ -39,7 +39,7 @@ class VisitingMainActivity : ComponentActivity() {
             val dateTV: TextView = view.findViewById(R.id.date)
             val intent = Intent(this@VisitingMainActivity, VisitingDetailsActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
 
         btnNew.setOnClickListener {

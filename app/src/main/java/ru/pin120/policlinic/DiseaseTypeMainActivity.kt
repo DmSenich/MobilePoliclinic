@@ -36,7 +36,7 @@ class DiseaseTypeMainActivity : ComponentActivity() {
             val selectedName = nameTV.text.toString()
             val intent = Intent(this@DiseaseTypeMainActivity, DiseaseTypeDetailsActivity::class.java)
             intent.putExtra("id", selectedId)
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
 
         btnNew.setOnClickListener {

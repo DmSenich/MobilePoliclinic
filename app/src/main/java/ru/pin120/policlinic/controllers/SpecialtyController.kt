@@ -76,4 +76,19 @@ class SpecialtyController(private val mDBHelper: DatabaseHelper) {
             throw Exception("Exception of updating record")
         }
     }
+    fun deleteSpecialty(specialtyId:Long){
+        val query = "select count(*) from doctors_specialties where _idspecialty= ?"
+        val selectionArgs = arrayOf(specialtyId.toString())
+        val countDoctors = mDb.rawQuery(query, selectionArgs).use {cursor ->
+            cursor.moveToFirst()
+            cursor.getLong(0)
+        }
+        if(countDoctors == 0L){
+            mDb.delete("specialties", "_id = ?", selectionArgs)
+        }
+        else{
+            throw SQLException("Failed to delete specialty")
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.R
@@ -20,11 +21,13 @@ import java.util.Locale
 class PatientDetailsActivity : ComponentActivity() {
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var patientController: PatientController
+    private var patientId = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_patient)
         val btnUpdate: Button = findViewById(R.id.btnUpdate)
+        val btnDelete:Button = findViewById(R.id.bDelete)
         mDBHelper = DatabaseHelper(this)
         patientController = PatientController(mDBHelper)
 
@@ -45,6 +48,17 @@ class PatientDetailsActivity : ComponentActivity() {
             val intent = Intent(this@PatientDetailsActivity, PatientUpdateActivity::class.java)
             intent.putExtra("id", tvId.text.toString().toLong())
             startActivityForResult(intent, 0)
+        }
+        btnDelete.setOnClickListener {
+            try {
+                patientController.deletePatient(patientId)
+                val intent =Intent()
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            catch (ex:Exception){
+                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -79,9 +93,9 @@ class PatientDetailsActivity : ComponentActivity() {
 //        tvApartment: TextView
     ) {
         if (intent.extras?.getLong("id") != null) {
-            tvId.text = intent.extras?.getLong("id").toString()
-            val id = intent.extras!!.getLong("id")
-            val patient = patientController.getPatientById(id)
+            patientId = intent.extras?.getLong("id")!!
+            tvId.text = patientId.toString()
+            val patient = patientController.getPatientById(patientId)
             tvLastName.text = patient!!.lastName
             tvFirstName.text = patient.firstName
             tvPatr.text = patient.patr ?: ""

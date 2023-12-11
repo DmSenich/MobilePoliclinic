@@ -38,7 +38,7 @@ class SpecialtyMainActivity : ComponentActivity() {
             val selectedName = nameTV.text.toString()
             val intent = Intent(this@SpecialtyMainActivity, SpecialtyDetailsActivity::class.java)
             intent.putExtra("id", selectedId)
-            startActivity(intent)
+            startActivityForResult(intent, 0)
 //            Toast.makeText(
 //                this,
 //                "Selected ID: $selectedId, Name: $selectedName",

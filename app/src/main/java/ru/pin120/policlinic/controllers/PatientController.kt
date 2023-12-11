@@ -125,4 +125,19 @@ class PatientController(private val mDBHelper: DatabaseHelper) {
             throw Exception("Exception of updating record")
         }
     }
+    fun deletePatient(patientId:Long){
+        val query = "select count(*) from visitings where _idpatient = ?"
+        val selectionArgs = arrayOf(patientId.toString())
+        val countVisitings = mDb.rawQuery(query, selectionArgs).use {cursor ->
+            cursor.moveToFirst()
+            cursor.getLong(0)
+        }
+
+        if(countVisitings == 0L){
+            mDb.delete("patients", "_id = ?", selectionArgs)
+        }
+        else{
+            throw android.database.SQLException("Failed to delete patient")
+        }
+    }
 }

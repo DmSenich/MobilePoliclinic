@@ -14,7 +14,7 @@ class DiseaseController(private val dbHelper: DatabaseHelper) {
     private val visitingController = VisitingController(dbHelper)
     private val diseaseTypeController = DiseaseTypeController(dbHelper)
 
-    fun getAllDiseasesForVisiting(visitingId: Long): List<Disease> {
+    fun getAllDiseasesForVisiting(visitingId: Long): ArrayList<Disease> {
         val diseases = ArrayList<Disease>()
 
         val query = "SELECT * FROM diseases WHERE _idvisiting = ?"
@@ -93,10 +93,11 @@ class DiseaseController(private val dbHelper: DatabaseHelper) {
         }
     }
 
-//    fun deleteDisease(diseaseId: Long) {
-//        val selection = "${DatabaseContract.DiseaseEntry._ID} = ?"
-//        val selectionArgs = arrayOf(diseaseId.toString())
-//
-//        mDb.delete(DatabaseContract.DiseaseEntry.TABLE_NAME, selection, selectionArgs)
-//    }
+    fun deleteDisease(diseaseId: Long) {
+        val selectionArgs = arrayOf(diseaseId.toString())
+        val rows = mDb.delete("diseases", "_id = ?", selectionArgs)
+        if(rows == 0){
+            throw SQLException("Failed to delete disease")
+        }
+    }
 }

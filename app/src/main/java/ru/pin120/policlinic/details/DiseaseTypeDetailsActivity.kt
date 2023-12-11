@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.R
@@ -15,11 +16,13 @@ import ru.pin120.policlinic.updates.DiseaseTypeUpdateActivity
 class DiseaseTypeDetailsActivity : ComponentActivity() {
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var diseaseTypeController: DiseaseTypeController
+    private var diseaseTypeId = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_disease_type)
         val btnUpdate: Button = findViewById(R.id.bUpdate)
+        val btnDelete:Button = findViewById(R.id.bDelete)
         mDBHelper = DatabaseHelper(this)
         diseaseTypeController = DiseaseTypeController(mDBHelper)
 
@@ -31,6 +34,17 @@ class DiseaseTypeDetailsActivity : ComponentActivity() {
             val intent = Intent(this@DiseaseTypeDetailsActivity, DiseaseTypeUpdateActivity::class.java)
             intent.putExtra("id", tvId.text.toString().toLong())
             startActivityForResult(intent, 0)
+        }
+        btnDelete.setOnClickListener {
+            try {
+                diseaseTypeController.deleteDiseaseType(diseaseTypeId)
+                val intent =Intent()
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            catch (ex:Exception){
+                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -45,9 +59,9 @@ class DiseaseTypeDetailsActivity : ComponentActivity() {
 
     private fun setDiseaseTypeView(tvId: TextView, tvName: TextView) {
         if (intent.extras?.getLong("id") != null) {
-            tvId.text = intent.extras?.getLong("id").toString()
-            val id = intent.extras!!.getLong("id");
-            val diseaseType = diseaseTypeController.getDiseaseTypeById(id)
+            diseaseTypeId = intent.extras?.getLong("id")!!
+            tvId.text = diseaseTypeId.toString()
+            val diseaseType = diseaseTypeController.getDiseaseTypeById(diseaseTypeId)
             tvName.text = diseaseType!!.name
         }
     }

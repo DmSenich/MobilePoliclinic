@@ -132,4 +132,34 @@ class DoctorController(private val dbHelper: DatabaseHelper) {
             cursor.close()
         }
     }
+    fun getDoctorsBySpecialtyId(specialtyId: Long) : List<Doctor>{
+        val doctors = ArrayList<Doctor>()
+        val query = "SELECT _iddoctor FROM doctors_specialties where _idspecialty= ?"
+        mDb.rawQuery(query, arrayOf(specialtyId.toString())).use { cursor ->
+            cursor.moveToFirst()
+            while (!cursor.isAfterLast) {
+                val doctorId = cursor.getLong(0)
+                val doctor = getDoctorById(doctorId)
+                if(doctor != null)
+                    doctors.add(doctor)
+                cursor.moveToNext()
+            }
+        }
+        return doctors
+    }
+    fun deleteDoctor(doctorId:Long){
+        val query = "select count(*) from visitings where _iddoctor = ?"
+        val selectionArgs = arrayOf(doctorId.toString())
+        val countVisitings = mDb.rawQuery(query, selectionArgs).use {cursor ->
+            cursor.moveToFirst()
+            cursor.getLong(0)
+        }
+        if(countVisitings == 0L){
+            updateDoctorSpecialties(doctorId, ArrayList())
+            mDb.delete("doctors", "_id = ?", selectionArgs)
+        }
+        else{
+            throw android.database.SQLException("Failed to delete patient")
+        }
+    }
 }

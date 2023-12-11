@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.R
@@ -21,6 +22,7 @@ class SpecialtyDetailsActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_specialty)
         val btnUpdate : Button = findViewById(R.id.bUpdate)
+        val btnDelete :Button = findViewById(R.id.bDelete)
         mDBHelper = DatabaseHelper(this)
         specialtyController = SpecialtyController(mDBHelper)
 
@@ -32,6 +34,17 @@ class SpecialtyDetailsActivity : ComponentActivity() {
             val intent = Intent(this@SpecialtyDetailsActivity, SpecialtyUpdateActivity::class.java)
             intent.putExtra("id", tvId.text.toString().toLong())
             startActivityForResult(intent, 0)
+        }
+        btnDelete.setOnClickListener {
+            try {
+                specialtyController.deleteSpecialty(specialtyId)
+                val intent =Intent()
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            catch (ex:Exception){
+                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

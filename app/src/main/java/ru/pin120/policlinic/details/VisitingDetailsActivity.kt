@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.DiseaseMainActivity
@@ -19,7 +20,7 @@ class VisitingDetailsActivity : ComponentActivity() {
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var visitingController: VisitingController
 //    private lateinit var visiting: Visiting
-
+    private var visitingId = -1L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_visiting)
@@ -38,6 +39,7 @@ class VisitingDetailsActivity : ComponentActivity() {
 
         val btnUpdate: Button = findViewById(R.id.bUpdate)
         val btnDisease:Button = findViewById(R.id.bDiseases)
+        val btnDelete:Button = findViewById(R.id.bDelete)
 //        if (intent.extras?.getLong("id") != null) {
 //            val id = intent.extras!!.getLong("id")
 //
@@ -52,6 +54,17 @@ class VisitingDetailsActivity : ComponentActivity() {
             val intent = Intent(this@VisitingDetailsActivity, DiseaseMainActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)
+        }
+        btnDelete.setOnClickListener {
+            try {
+                visitingController.deleteVisiting(visitingId)
+                val intent =Intent()
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            catch (ex:Exception){
+                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -77,9 +90,9 @@ class VisitingDetailsActivity : ComponentActivity() {
         dateTV: TextView
     ) {
         if (intent.extras?.getLong("id") != -1L) {
-            val id = intent.extras!!.getLong("id")
-            idTV.text = id.toString()
-            val visiting = visitingController.getVisitingById(id!!)
+            visitingId = intent.extras!!.getLong("id")
+            idTV.text = visitingId.toString()
+            val visiting = visitingController.getVisitingById(visitingId!!)
             if (visiting != null) {
                 doctorTV.text = visiting.doctor!!.lastName + " " + visiting.doctor!!.firstName + " " + visiting.doctor!!.patr
                 patientTV.text = visiting.patient!!.lastName + " " + visiting.patient!!.firstName + " " + visiting.patient!!.patr

@@ -97,7 +97,26 @@ class VisitingController(private val dbHelper: DatabaseHelper) {
     }
 
     private fun getDiseasesForVisiting(visitingId: Long): ArrayList<Disease> {
-        return  ArrayList()
+//        val diseaseController = DiseaseController(dbHelper)
+//        val diseases = diseaseController.getAllDiseasesForVisiting(visitingId)
+//        return diseases
+        return ArrayList()
+    }
+    public fun deleteVisiting(visitingId:Long){
+
+        val query = "select count(*) from diseases where _idvisiting = ?"
+        val selectionArgs = arrayOf(visitingId.toString())
+        val countDiseases = mDb.rawQuery(query, selectionArgs).use {cursor ->
+            cursor.moveToFirst()
+            cursor.getLong(0)
+        }
+
+        if(countDiseases == 0L){
+            mDb.delete("visitings", "_id = ?", selectionArgs)
+        }
+        else{
+            throw SQLException("Failed to delete visiting")
+        }
     }
 
 }

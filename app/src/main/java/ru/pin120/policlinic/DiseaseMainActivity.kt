@@ -41,7 +41,7 @@ class DiseaseMainActivity : ComponentActivity() {
             val descriptionTV:TextView = view.findViewById(R.id.description)
             val intent = Intent(this@DiseaseMainActivity, DiseaseDetailsActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
 
         btnNew.setOnClickListener {

@@ -39,7 +39,7 @@ class DoctorMainActivity : ComponentActivity() {
             val workExpTV:TextView = view.findViewById(R.id.workExp)
             val intent = Intent(this@DoctorMainActivity, DoctorDetailsActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
 
         btnNew.setOnClickListener {

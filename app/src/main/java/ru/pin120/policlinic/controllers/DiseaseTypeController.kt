@@ -81,4 +81,19 @@ class DiseaseTypeController(private val mDBHelper: DatabaseHelper) {
             throw Exception("Exception of updating record")
         }
     }
+    fun deleteDiseaseType(diseaseTypeId:Long){
+        val query = "select count(*) from diseases where _iddiseasetype = ?"
+        val selectionArgs = arrayOf(diseaseTypeId.toString())
+        val countDiseases = mDb.rawQuery(query, selectionArgs).use {cursor ->
+            cursor.moveToFirst()
+            cursor.getLong(0)
+        }
+
+        if(countDiseases == 0L){
+            mDb.delete("diseasetypes", "_id = ?", selectionArgs)
+        }
+        else{
+            throw android.database.SQLException("Failed to delete disease_type")
+        }
+    }
 }
