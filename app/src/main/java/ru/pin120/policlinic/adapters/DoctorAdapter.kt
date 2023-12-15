@@ -20,16 +20,23 @@ class DoctorAdapter(context: Context, private val resource: Int, objects: List<D
         val doctor = getItem(position)
 
         val idTextView: TextView = itemView!!.findViewById(R.id.id)
-        val lastNameTextView: TextView = itemView.findViewById(R.id.lastName)
-        val firstNameTextView: TextView = itemView.findViewById(R.id.firstName)
-        val patrTextView: TextView = itemView.findViewById(R.id.patr)
-        val workExpTextView: TextView = itemView.findViewById(R.id.workExp)
+        val tvFIO:TextView = itemView!!.findViewById(R.id.tvFIO)
+//        val lastNameTextView: TextView = itemView.findViewById(R.id.lastName)
+//        val firstNameTextView: TextView = itemView.findViewById(R.id.firstName)
+//        val patrTextView: TextView = itemView.findViewById(R.id.patr)
+//        val workExpTextView: TextView = itemView.findViewById(R.id.workExp)
 
         idTextView.text = doctor?.id.toString()
-        lastNameTextView.text = "Last Name: ${doctor?.lastName}"
-        firstNameTextView.text = "First Name: ${doctor?.firstName}"
-        patrTextView.text = "Patr: ${doctor?.patr}"
-        workExpTextView.text = "Work Exp: ${doctor?.workExp} years"
+//        var stringBuilder:StringBuilder = java.lang.StringBuilder()
+//        stringBuilder.append(doctor?.lastName.toString() + " " + doctor?.firstName.toString() + " " + doctor?.patr.toString())
+        tvFIO.text = doctor?.lastName + " " + doctor?.firstName
+        if(doctor?.patr != null){
+            tvFIO.text = tvFIO.text.toString() + " " + doctor?.patr
+        }
+//        lastNameTextView.text = "Last Name: ${doctor?.lastName}"
+//        firstNameTextView.text = "First Name: ${doctor?.firstName}"
+//        patrTextView.text = "Patr: ${doctor?.patr}"
+//        workExpTextView.text = "Work Exp: ${doctor?.workExp} years"
 
         return itemView
     }

@@ -29,9 +29,15 @@ class VisitingAdapter(context: Context, resource: Int, objects: List<Visiting>) 
         val dateTV: TextView = itemView.findViewById(R.id.date)
 
         idTV.text = visiting?.id.toString()
-        doctorTV.text = "${visiting?.doctor?.lastName + visiting?.doctor?.firstName + visiting?.doctor?.patr}"
-        patientTV.text = "${visiting?.patient?.lastName + visiting?.patient?.firstName + visiting?.patient?.patr}"
-        dateTV.text = "${SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(visiting?.date)}"
+        doctorTV.text = visiting?.doctor?.lastName  +" "+ visiting?.doctor?.firstName
+        if(visiting?.doctor?.patr != null){
+            doctorTV.text = doctorTV.text.toString() + " " + visiting?.doctor?.patr
+        }
+        patientTV.text = visiting?.patient?.lastName+ " " + visiting?.patient?.firstName
+        if(visiting?.patient?.patr != null){
+            patientTV.text = patientTV.text.toString() + " " + visiting?.patient?.patr
+        }
+        dateTV.text = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(visiting?.date)
 
         return itemView
     }

@@ -14,29 +14,10 @@
         android:visibility="invisible"/>
 
     <TextView
-        android:id="@+id/lastName"
+        android:id="@+id/tvFIO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/firstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/patr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/workExp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@android:color/darker_gray" />
 </LinearLayout>

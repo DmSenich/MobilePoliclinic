@@ -20,11 +20,11 @@ class DiseaseAdapter(context: Context, resource: Int, objects: List<Disease>) :
 
         val idTV: TextView = itemView.findViewById(R.id.id)
         val diseaseTypeTV: TextView = itemView.findViewById(R.id.type)
-        val descriptionTV: TextView = itemView.findViewById(R.id.description)
+//        val descriptionTV: TextView = itemView.findViewById(R.id.description)
 
         idTV.text = disease?.id.toString()
         diseaseTypeTV.text = disease?.diseaseType?.name
-        descriptionTV.text = disease?.description
+//        descriptionTV.text = disease?.description
 
         return itemView
     }

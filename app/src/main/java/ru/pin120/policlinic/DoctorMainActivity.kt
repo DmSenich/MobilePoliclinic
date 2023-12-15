@@ -41,10 +41,11 @@ class DoctorMainActivity : ComponentActivity() {
 
         listView.setOnItemClickListener { parent, view, position, id ->
             val idTV: TextView = view.findViewById(R.id.id)
-            val lastNameTV: TextView = view.findViewById(R.id.lastName)
-            val firstNameTV: TextView = view.findViewById(R.id.firstName)
-            val patrTV: TextView = view.findViewById(R.id.patr)
-            val workExpTV:TextView = view.findViewById(R.id.workExp)
+            val tvFIO:TextView = view.findViewById(R.id.tvFIO)
+//            val lastNameTV: TextView = view.findViewById(R.id.lastName)
+//            val firstNameTV: TextView = view.findViewById(R.id.firstName)
+//            val patrTV: TextView = view.findViewById(R.id.patr)
+//            val workExpTV:TextView = view.findViewById(R.id.workExp)
             val intent = Intent(this@DoctorMainActivity, DoctorDetailsActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)
@@ -65,12 +66,14 @@ class DoctorMainActivity : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            val specLine = data?.extras?.getString("specialtiesId") ?: ""
-            specialtiesId.clear()
-            if(specLine != "")
-                for(sp in specLine!!.split(",")){
-                    specialtiesId.add(sp.toLong())
-                }
+            val specLine = data?.extras?.getString("specialtiesId")
+            if(specLine != null){
+                specialtiesId.clear()
+                if(specLine != "")
+                    for(sp in specLine!!.split(",")){
+                        specialtiesId.add(sp.toLong())
+                    }
+            }
             lateinit var doctors:List<Doctor>
             if(specialtiesId.isEmpty()){
                 doctors = doctorController.getAllDoctors()

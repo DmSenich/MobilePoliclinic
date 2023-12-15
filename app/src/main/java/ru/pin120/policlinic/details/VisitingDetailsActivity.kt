@@ -106,6 +106,9 @@ class VisitingDetailsActivity : ComponentActivity() {
         return true
     }
     override fun onBackPressed() {
+        val intent = Intent()
+        setResult(RESULT_OK, intent)
+        finish()
         super.onBackPressed()
     }
 }

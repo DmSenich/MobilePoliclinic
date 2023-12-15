@@ -22,6 +22,10 @@ class VisitingMainActivity : ComponentActivity() {
 
     private lateinit var mDBHelper: DatabaseHelper
     private lateinit var visitingController: VisitingController
+    private var doctorId:Long = 0L
+    private var patientId:Long = 0L
+    private var date1:String? = null
+    private var date2:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,10 +71,15 @@ class VisitingMainActivity : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            val doctorId = data?.extras!!.getLong("doctorId")
-            val patientId = data?.extras!!.getLong("patientId")
-            val date1 = data.extras!!.getString("minDate")
-            val date2 = data.extras!!.getString("maxDate")
+            if(data?.extras?.getLong("doctorId") != null ||
+                data?.extras?.getLong("patientId") != null ||
+                data?.extras?.getString("minDate") != null ||
+                data?.extras?.getString("maxDate") != null){
+                doctorId = data?.extras!!.getLong("doctorId")
+                patientId = data?.extras!!.getLong("patientId")
+                date1 = data.extras!!.getString("minDate")
+                date2 = data.extras!!.getString("maxDate")
+            }
             val minDate:Date?
             val maxDate:Date?
             if(date1 != null){

@@ -108,6 +108,8 @@ class DoctorDetailsActivity : ComponentActivity() {
         return true
     }
     override fun onBackPressed() {
+        setResult(RESULT_OK, intent)
+        finish()
         super.onBackPressed()
     }
 }
