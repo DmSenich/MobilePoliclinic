@@ -132,10 +132,12 @@ class DoctorController(private val dbHelper: DatabaseHelper) {
             cursor.close()
         }
     }
-    fun getDoctorsBySpecialtyId(specialtyId: Long) : List<Doctor>{
+    fun getDoctorsBySpecialtiesId(specialtiesId: ArrayList<Long>) : List<Doctor>{
         val doctors = ArrayList<Doctor>()
-        val query = "SELECT _iddoctor FROM doctors_specialties where _idspecialty= ?"
-        mDb.rawQuery(query, arrayOf(specialtyId.toString())).use { cursor ->
+        val placeholders = specialtiesId.joinToString(",") { "?" }
+        val selectionArgs = specialtiesId.map { it.toString() }.toTypedArray()
+        val query = "SELECT _iddoctor FROM doctors_specialties WHERE _idspecialty IN ($placeholders)"
+        mDb.rawQuery(query, selectionArgs).use { cursor ->
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
                 val doctorId = cursor.getLong(0)

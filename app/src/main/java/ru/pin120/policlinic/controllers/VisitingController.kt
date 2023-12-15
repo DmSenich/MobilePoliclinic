@@ -9,7 +9,9 @@ import ru.pin120.policlinic.models.Doctor
 import ru.pin120.policlinic.models.Patient
 import ru.pin120.policlinic.models.Visiting
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
+import kotlin.math.max
 
 class VisitingController(private val dbHelper: DatabaseHelper) {
 
@@ -35,6 +37,59 @@ class VisitingController(private val dbHelper: DatabaseHelper) {
                 cursor.moveToNext()
             }
         }
+        return visitings
+    }
+    fun getVisitingsByDoctorIdAndPatientId(doctorId: Long, patientId: Long, minDate:Date?, maxDate:Date?): List<Visiting> {
+        val visitings = ArrayList<Visiting>()
+        if(!(doctorId == 0L && patientId == 0L)){
+            var queryBuilder = "SELECT * FROM visitings where "
+            if(doctorId != 0L){
+                queryBuilder += " _iddoctor = ${doctorId}"
+                if(patientId != 0L){
+                    queryBuilder += " and _idpatient = ${patientId}"
+                }
+            }
+            else if(patientId != 0L){
+                queryBuilder += " _idpatient = ${patientId}"
+            }
+            val query = queryBuilder
+            mDb.rawQuery(query, null).use { cursor ->
+                cursor.moveToFirst()
+                while (!cursor.isAfterLast) {
+                    val visiting = Visiting(
+                        id = cursor.getLong(0),
+                        doctor = getDoctorById(cursor.getLong(1)),
+                        patient = getPatientById(cursor.getLong(2)),
+                        date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            .parse(cursor.getString(3)),
+                        diseases = getDiseasesForVisiting(cursor.getLong(0))
+                    )
+                    visitings.add(visiting)
+                    cursor.moveToNext()
+                }
+
+            }
+        }
+        else{
+            visitings.addAll(getAllVisitings())
+        }
+
+        val filter:List<Visiting>
+        if(minDate != null && maxDate != null){
+            filter = visitings.filter { !it.date!!.before(minDate) && !it.date!!.after(maxDate) }
+            return filter
+        }
+        else{
+            if(minDate != null){
+                filter = visitings.filter { !it.date!!.before(minDate)  }
+                return filter
+            }
+            else if(maxDate != null){
+                filter = visitings.filter { !it.date!!.after(maxDate) }
+                return filter
+            }
+        }
+
         return visitings
     }
 

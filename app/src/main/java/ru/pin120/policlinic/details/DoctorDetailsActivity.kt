@@ -104,7 +104,8 @@ class DoctorDetailsActivity : ComponentActivity() {
         }
     }
     override fun onMenuItemSelected(featureId: Int, item: MenuItem): Boolean {
-        return super.onMenuItemSelected(featureId, item)
+        onBackPressed()
+        return true
     }
     override fun onBackPressed() {
         super.onBackPressed()

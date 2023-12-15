@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ФИО доктора:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/doctorFIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ФИО пациента:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/patientFIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ранняя дата:"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"/>
+        <CheckBox
+            android:id="@+id/isMinDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+    <DatePicker
+        android:id="@+id/etDateMin"
+        android:layout_width="match_parent"
+        android:layout_height="121dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поздняя дата:"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"/>
+        <CheckBox
+            android:id="@+id/isMaxDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+    <DatePicker
+        android:id="@+id/etDateMax"
+        android:layout_width="match_parent"
+        android:layout_height="121dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <Button
+        android:id="@+id/btnChooseDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выбрать доктора"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="right"
+        />
+
+    <Button
+        android:id="@+id/btnChoosePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выбрать пациента"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="right"
+        />
+
+    <Button
+        android:id="@+id/OK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="right"
+        />
+
+    <TextView
+        android:id="@+id/tvDoctorId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:visibility="invisible" />
+    <TextView
+        android:id="@+id/tvPatientId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:visibility="invisible" />
+
+</LinearLayout>

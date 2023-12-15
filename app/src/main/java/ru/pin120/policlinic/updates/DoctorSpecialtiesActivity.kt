@@ -20,6 +20,7 @@ class DoctorSpecialtiesActivity : ComponentActivity() {
     private lateinit var doctorController: DoctorController
     private lateinit var specialtyController: SpecialtyController
     private var doctorId: Long? = null
+    private var specialtiesId:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +46,25 @@ class DoctorSpecialtiesActivity : ComponentActivity() {
 
         btnSave.setOnClickListener {
             val selectedSpecialties = adapter.getSelectedSpecialties()
-            doctorController.updateDoctorSpecialties(doctorId!!, selectedSpecialties)
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+            val isFilt = intent.extras?.getBoolean("isFilt")
+            if(isFilt!!){
+                for(sp in selectedSpecialties){
+                    specialtiesId += sp.id.toString() + ","
+                }
+                if(specialtiesId != ""){
+                    specialtiesId=specialtiesId.removeSuffix(",")
+                }
+                val intent = Intent()
+                intent.putExtra("specialtiesId", specialtiesId)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            else{
+                doctorController.updateDoctorSpecialties(doctorId!!, selectedSpecialties)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+
         }
 
     }
