@@ -84,7 +84,7 @@ class DoctorController(private val dbHelper: DatabaseHelper) {
         }
     }
 
-    fun addDoctorSpecialties(doctorId: Long, specialties: List<Specialty>) {
+    private fun addDoctorSpecialties(doctorId: Long, specialties: List<Specialty>) {
         for (specialty in specialties) {
             val values = ContentValues().apply {
                 put("_iddoctor", doctorId)

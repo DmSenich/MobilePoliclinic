@@ -47,15 +47,19 @@ class DoctorSpecialtiesActivity : ComponentActivity() {
         btnSave.setOnClickListener {
             val selectedSpecialties = adapter.getSelectedSpecialties()
             val isFilt = intent.extras?.getBoolean("isFilt")
+            var namesSpecialties:String = ""
             if(isFilt!!){
                 for(sp in selectedSpecialties){
                     specialtiesId += sp.id.toString() + ","
+                    namesSpecialties += sp.name.toString() + ","
                 }
                 if(specialtiesId != ""){
                     specialtiesId=specialtiesId.removeSuffix(",")
+                    namesSpecialties=namesSpecialties.removeSuffix(",")
                 }
                 val intent = Intent()
                 intent.putExtra("specialtiesId", specialtiesId)
+                intent.putExtra("namesSpecialties", namesSpecialties)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }

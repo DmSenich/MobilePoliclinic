@@ -64,15 +64,21 @@ class DoctorMainActivity : ComponentActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        val tFilt: TextView = findViewById(R.id.tFilt)
         if (resultCode == Activity.RESULT_OK) {
             val specLine = data?.extras?.getString("specialtiesId")
             if(specLine != null){
                 specialtiesId.clear()
-                if(specLine != "")
+                if(specLine != ""){
                     for(sp in specLine!!.split(",")){
                         specialtiesId.add(sp.toLong())
                     }
+                    val names = data?.extras?.getString("namesSpecialties")
+                    tFilt.text = names
+                }
+                else{
+                    tFilt.text = "---"
+                }
             }
             lateinit var doctors:List<Doctor>
             if(specialtiesId.isEmpty()){

@@ -23,6 +23,7 @@ class SpecialtyDetailsActivity : ComponentActivity() {
         setContentView(R.layout.activity_details_specialty)
         val btnUpdate : Button = findViewById(R.id.bUpdate)
         val btnDelete :Button = findViewById(R.id.bDelete)
+
         mDBHelper = DatabaseHelper(this)
         specialtyController = SpecialtyController(mDBHelper)
 

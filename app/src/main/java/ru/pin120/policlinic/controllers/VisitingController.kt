@@ -157,7 +157,7 @@ class VisitingController(private val dbHelper: DatabaseHelper) {
 //        return diseases
         return ArrayList()
     }
-    public fun deleteVisiting(visitingId:Long){
+    fun deleteVisiting(visitingId:Long){
 
         val query = "select count(*) from diseases where _idvisiting = ?"
         val selectionArgs = arrayOf(visitingId.toString())
