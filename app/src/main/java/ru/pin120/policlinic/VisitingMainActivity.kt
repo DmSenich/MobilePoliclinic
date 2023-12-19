@@ -88,17 +88,29 @@ class VisitingMainActivity : ComponentActivity() {
         }
     }
     private fun generateFile(visitings:List<Visiting>) : File {
-        val fileName = "Список_визитов.txt"
+        val timeNow = SimpleDateFormat("yyyy-MM-dd--hh-mm-ss", Locale.getDefault()).format(Date())
+        val fileName = "Список_визитов_${timeNow}.txt"
         val downloadsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 //        val downloadsDirectory = "/storage/emulated/0/Download"
         val file = File(downloadsDirectory, fileName)
         try{
             FileWriter(file).use{ writer ->
+                var count = 0
                 if(doctorId != 0L){
-                    writer.append("Доктор: ${visitings.first().doctor}\n")
+                    val doctor = visitings.first().doctor
+                    writer.append("Доктор: ${doctor?.lastName} ${doctor?.firstName}")
+                    if(doctor?.patr != null){
+                        writer.append(" ${doctor?.patr}")
+                    }
+                    writer.append("\n")
                 }
                 if(patientId != 0L){
-                    writer.append("Патиент: ${visitings.first().patient}\n")
+                    val patient = visitings.first().patient
+                    writer.append("Пациент: ${patient?.lastName} ${patient?.firstName}")
+                    if(patient?.patr != null){
+                        writer.append(" ${patient?.patr}")
+                    }
+                    writer.append("\n")
                 }
                 if(date1 != null){
                     writer.append("Минимальная дата: ${date1}\n")
@@ -107,7 +119,26 @@ class VisitingMainActivity : ComponentActivity() {
                     writer.append("Максимальная дата: ${date2}\n")
                 }
                 visitings.forEach{ visiting ->
-                    writer.append("$visiting\n")
+                    count++
+                    writer.append("${count}) ")
+                    writer.append("Дата: ${SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(visiting.date)}\n")
+                    if(doctorId == 0L){
+                        val doctor = visiting.doctor
+                        writer.append("Доктор: ${doctor?.lastName} ${doctor?.firstName}")
+                        if(doctor?.patr != null){
+                            writer.append(" ${doctor.patr}")
+                        }
+                        writer.append("\n")
+                    }
+                    if(patientId == 0L){
+                        val patient = visiting.patient
+                        writer.append("Пациент: ${patient?.lastName} ${patient?.firstName}")
+                        if(patient?.patr != null){
+                            writer.append(" ${patient.patr}")
+                        }
+                        writer.append("\n")
+                    }
+                    writer.append("\n")
                 }
             }
             Toast.makeText(this, "Файл создан", Toast.LENGTH_SHORT).show()

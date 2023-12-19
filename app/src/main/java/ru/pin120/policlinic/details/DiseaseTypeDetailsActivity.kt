@@ -18,6 +18,9 @@ import ru.pin120.policlinic.models.Doctor
 import ru.pin120.policlinic.updates.DiseaseTypeUpdateActivity
 import java.io.File
 import java.io.FileWriter
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import kotlin.reflect.typeOf
 
 class DiseaseTypeDetailsActivity : ComponentActivity() {
@@ -64,15 +67,28 @@ class DiseaseTypeDetailsActivity : ComponentActivity() {
     }
 
     private fun generateFile(diseases:List<Disease>, diseaseName:String) : File {
-        val fileName = "Список_заболеваний_${diseaseName}.txt"
+        val timeNow = SimpleDateFormat("yyyy-MM-dd--hh-mm-ss", Locale.getDefault()).format(Date())
+        val fileName = "Список_заболеваний_${diseaseName}_${timeNow}.txt"
         val downloadsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 //        val downloadsDirectory = "/storage/emulated/0/Download"
         val file = File(downloadsDirectory, fileName)
         try{
             FileWriter(file).use{ writer ->
-                writer.append("$diseaseName\n")
+                var count = 0
+                writer.append("Название диагноза: $diseaseName\n\n")
+                writer.append("Общее количество поставленных диагнозов: ${diseases.count()}\n")
                 diseases.forEach{ disease ->
-                    writer.append("$disease\n")
+                    count++
+                    writer.append("${count}) ")
+                    val date = disease.visiting?.date
+                    writer.append("Дата: ${SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date)}\n")
+                    val patient = disease.visiting?.patient
+                    writer.append("Пациент: ${patient?.lastName} ${patient?.firstName}")
+                    if(patient?.patr != null){
+                        writer.append(" ${patient?.patr}")
+                    }
+                    writer.append("\n")
+                    writer.append("Описание: ${disease.description}\n\n")
                 }
             }
             Toast.makeText(this, "Файл создан", Toast.LENGTH_SHORT).show()

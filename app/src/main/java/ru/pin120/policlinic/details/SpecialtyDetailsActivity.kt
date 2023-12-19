@@ -22,6 +22,9 @@ import ru.pin120.policlinic.models.Specialty
 import ru.pin120.policlinic.updates.SpecialtyUpdateActivity
 import java.io.File
 import java.io.FileWriter
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class SpecialtyDetailsActivity : ComponentActivity() {
     private lateinit var mDBHelper:DatabaseHelper
@@ -66,15 +69,25 @@ class SpecialtyDetailsActivity : ComponentActivity() {
     }
 
     private fun generateFile(doctors:List<Doctor>, specialtyName:String) :File {
-        val fileName = "Список_докторов_${specialtyName}.txt"
+        val timeNow = SimpleDateFormat("yyyy-MM-dd--hh-mm-ss", Locale.getDefault()).format(Date())
+        val fileName = "Список_докторов_${specialtyName}_${timeNow}.txt"
         val downloadsDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 //        val downloadsDirectory = "/storage/emulated/0/Download"
         val file = File(downloadsDirectory, fileName)
         try{
+
             FileWriter(file).use{writer ->
-                writer.append("$specialtyName\n")
+                var count = 0
+                writer.append("Специальность: $specialtyName\n")
+                writer.append("ФИО специалистов:\n")
                 doctors.forEach{ doctor ->
-                    writer.append("$doctor\n")
+                    count++
+                    writer.append("${count}) ")
+                    writer.append("${doctor.lastName} ${doctor.firstName}")
+                    if(doctor.patr != null){
+                        writer.append(" ${doctor.patr}")
+                    }
+                    writer.append("\n\n")
                 }
             }
             Toast.makeText(this, "Файл создан", Toast.LENGTH_SHORT).show()
