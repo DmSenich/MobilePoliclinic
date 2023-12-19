@@ -30,10 +30,17 @@
             android:visibility="invisible"
             android:text="Фильтр" />
     </LinearLayout>
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="615dp" />
+        android:layout_height="551dp" />
+    <Button
+        android:id="@+id/bLoad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Загрузить список"
+        android:visibility="invisible"/>
     <Button
         android:id="@+id/bNew"
         android:layout_width="match_parent"

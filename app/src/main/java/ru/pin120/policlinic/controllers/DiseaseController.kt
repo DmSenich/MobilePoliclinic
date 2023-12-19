@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.models.Disease
 import ru.pin120.policlinic.models.DiseaseType
+import ru.pin120.policlinic.models.Doctor
 import ru.pin120.policlinic.models.Visiting
 
 class DiseaseController(private val dbHelper: DatabaseHelper) {
@@ -99,5 +100,23 @@ class DiseaseController(private val dbHelper: DatabaseHelper) {
         if(rows == 0){
             throw SQLException("Failed to delete disease")
         }
+    }
+
+    fun getDiseasesByTypesId(typesId: ArrayList<Long>): List<Disease> {
+        val diseases = ArrayList<Disease>()
+        val placeholders = typesId.joinToString(",") { "?" }
+        val selectionArgs = typesId.map { it.toString() }.toTypedArray()
+        val query = "SELECT _id FROM diseases WHERE _iddiseasetype IN ($placeholders)"
+        mDb.rawQuery(query, selectionArgs).use { cursor ->
+            cursor.moveToFirst()
+            while (!cursor.isAfterLast) {
+                val diseaseId = cursor.getLong(0)
+                val disease = getDiseaseById(diseaseId)
+                if(disease != null)
+                    diseases.add(disease)
+                cursor.moveToNext()
+            }
+        }
+        return diseases
     }
 }
