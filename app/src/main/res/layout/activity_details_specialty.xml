@@ -42,13 +42,14 @@
         android:layout_gravity="right"
         android:layout_marginTop="16dp"
         android:text="Обновить" />
+
     <Button
         android:id="@+id/bLoad"
-        android:layout_width="119dp"
+        android:layout_width="173dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="16dp"
-        android:text="Перечень специалистов" />
+        android:text="Загрузить документ (Перечень специалистов)" />
     <Button
         android:id="@+id/bDelete"
         android:layout_width="wrap_content"

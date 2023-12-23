@@ -59,14 +59,14 @@ class DoctorUpdateActivity : ComponentActivity() {
                 doctorController.updateDoctor(doctor)
                 Toast.makeText(
                     this,
-                    "Record updated\nName: ${doctor.lastName} ${doctor.firstName}",
+                    "Запись обновлена",
                     Toast.LENGTH_SHORT
                 ).show()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
-                    "Exception updating record",
-                    Toast.LENGTH_SHORT
+                    "Ошибка при обновлении записи",
+                    Toast.LENGTH_LONG
                 ).show()
             } finally {
                 setResult(Activity.RESULT_OK, intent)

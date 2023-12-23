@@ -16,7 +16,7 @@ import java.sql.SQLException
 class DatabaseHelper(private val mcontext:Context) : SQLiteOpenHelper(mcontext, DB_NAME, null, DB_VERSION) {
     companion object {
         private const val DB_NAME = "policlinicMobileDataBase.db"
-        private const val DB_VERSION = 2
+        private const val DB_VERSION = 3
         private var DB_PATH = ""
     }
     init {

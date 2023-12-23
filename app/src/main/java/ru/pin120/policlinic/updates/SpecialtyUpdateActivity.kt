@@ -42,14 +42,14 @@ class SpecialtyUpdateActivity : ComponentActivity() {
                 specialtyController.updateSpecialty(specialty)
                 Toast.makeText(
                     this,
-                    "Запись обновлена\n Name: ${specialty.name}",
+                    "Запись обновлена",
                     Toast.LENGTH_SHORT
                 ).show()
             }catch (ex:Exception){
                 Toast.makeText(
                     this,
-                    "Exception of updating record",
-                    Toast.LENGTH_SHORT
+                    "Ошибка при обновлении записи",
+                    Toast.LENGTH_LONG
                 ).show()
             }finally {
                 setResult(Activity.RESULT_OK, intent)

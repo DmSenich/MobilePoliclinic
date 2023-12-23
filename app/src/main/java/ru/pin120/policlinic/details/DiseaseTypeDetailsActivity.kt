@@ -55,7 +55,7 @@ class DiseaseTypeDetailsActivity : ComponentActivity() {
                 finish()
             }
             catch (ex:Exception){
-                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, ex.message, Toast.LENGTH_LONG).show()
             }
         }
         btnLoad.setOnClickListener {
@@ -93,7 +93,7 @@ class DiseaseTypeDetailsActivity : ComponentActivity() {
             }
             Toast.makeText(this, "Файл создан", Toast.LENGTH_SHORT).show()
         }catch(ex:Exception){
-            Toast.makeText(this, "Файл не удалось записать", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Файл не удалось записать", Toast.LENGTH_LONG).show()
         }
         return file
     }

@@ -143,7 +143,7 @@ class VisitingMainActivity : ComponentActivity() {
             }
             Toast.makeText(this, "Файл создан", Toast.LENGTH_SHORT).show()
         }catch(ex:Exception){
-            Toast.makeText(this, "Файл не удалось записать", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Файл не удалось записать", Toast.LENGTH_LONG).show()
         }
         return file
     }

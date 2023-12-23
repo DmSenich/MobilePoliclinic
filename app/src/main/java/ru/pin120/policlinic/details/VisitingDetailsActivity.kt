@@ -64,7 +64,7 @@ class VisitingDetailsActivity : ComponentActivity() {
                 finish()
             }
             catch (ex:Exception){
-                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, ex.message, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -95,8 +95,14 @@ class VisitingDetailsActivity : ComponentActivity() {
             idTV.text = visitingId.toString()
             val visiting = visitingController.getVisitingById(visitingId!!)
             if (visiting != null) {
-                doctorTV.text = visiting.doctor!!.lastName + " " + visiting.doctor!!.firstName + " " + visiting.doctor!!.patr
-                patientTV.text = visiting.patient!!.lastName + " " + visiting.patient!!.firstName + " " + visiting.patient!!.patr
+                doctorTV.text = visiting.doctor!!.lastName + " " + visiting.doctor!!.firstName
+                if(visiting.doctor!!.patr != null){
+                    doctorTV.text = doctorTV.text.toString() + " " + visiting.doctor!!.patr
+                }
+                patientTV.text = visiting.patient!!.lastName + " " + visiting.patient!!.firstName
+                if(visiting.patient!!.patr != null){
+                    patientTV.text = patientTV.text.toString() + " " + visiting.patient!!.patr
+                }
                 dateTV.text =  SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(visiting.date)
             }
         }

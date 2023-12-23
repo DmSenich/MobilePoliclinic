@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
 import ru.pin120.policlinic.R
@@ -64,9 +65,25 @@ class DoctorSpecialtiesActivity : ComponentActivity() {
                 finish()
             }
             else{
+                try{
+
+
                 doctorController.updateDoctorSpecialties(doctorId!!, selectedSpecialties)
+                Toast.makeText(
+                    this,
+                    "Запись обновлена",
+                    Toast.LENGTH_SHORT
+                ).show()
                 setResult(Activity.RESULT_OK, intent)
                 finish()
+                }catch (ex:Exception){
+                    Toast.makeText(
+                        this,
+                        ex.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                    finish()
+                }
             }
 
         }

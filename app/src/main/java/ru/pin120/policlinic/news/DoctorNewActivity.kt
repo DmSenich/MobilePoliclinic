@@ -61,8 +61,8 @@ class DoctorNewActivity : ComponentActivity() {
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
-                    "Exception of adding record",
-                    Toast.LENGTH_SHORT
+                    "Ошибка при добавлении записи",
+                    Toast.LENGTH_LONG
                 ).show()
 //                setResult(Activity.RESULT_CANCELED)
             }

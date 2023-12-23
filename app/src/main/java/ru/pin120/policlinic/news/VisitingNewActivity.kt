@@ -84,7 +84,7 @@ class VisitingNewActivity : ComponentActivity() {
                 Toast.makeText(
                     this,
                     "Ошибка при добавлении записи",
-                    Toast.LENGTH_SHORT
+                    Toast.LENGTH_LONG
                 ).show()
                 //setResult(Activity.RESULT_CANCELED)
             }
@@ -122,7 +122,10 @@ class VisitingNewActivity : ComponentActivity() {
             val doctorId = intent.extras!!.getLong("doctorId")
             val doctor = doctorController.getDoctorById(doctorId!!)
             if (doctor != null) {
-                doctorTV.text = doctor!!.lastName + " " + doctor!!.firstName + " " + doctor!!.patr
+                doctorTV.text = doctor!!.lastName + " " + doctor!!.firstName
+                if(doctor.patr != null){
+                    doctorTV.text = doctorTV.text.toString() + " " + doctor!!.patr
+                }
             }
         }
         if (intent.extras?.getLong("patientId") != 0L) {
@@ -130,7 +133,10 @@ class VisitingNewActivity : ComponentActivity() {
             val patientId = intent.extras!!.getLong("patientId")
             val patient = patientController.getPatientById(patientId!!)
             if (patient != null) {
-                patientTV.text = patient!!.lastName + " " + patient!!.firstName + " " + patient!!.patr
+                patientTV.text = patient!!.lastName + " " + patient!!.firstName
+                if(patient.patr != null){
+                    patientTV.text = patientTV.text.toString() + " " + patient!!.patr
+                }
             }
         }
     }

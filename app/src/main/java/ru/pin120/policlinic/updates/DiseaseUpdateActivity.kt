@@ -47,23 +47,21 @@ class DiseaseUpdateActivity: ComponentActivity() {
         visitingId = intent.getLongExtra("visitingId", -1)
         diseaseId = intent.getLongExtra("id", -1)
         if (visitingId == -1L) {
-            Toast.makeText(this, "Ошибка: visitingId не указан", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ошибка: visitingId не указан", Toast.LENGTH_LONG).show()
             finish()
             return
         }
         if (diseaseId == -1L) {
-            Toast.makeText(this, "Ошибка: diseaseId не указан", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ошибка: diseaseId не указан", Toast.LENGTH_LONG).show()
             finish()
             return
         }else{
             val disease = diseaseController.getDiseaseById(diseaseId)
             intent.putExtra("typeId", disease?.diseaseType?.id)
+
             etDescription.setText(disease?.description)
             setDiseaseView(tvVisitingId,tvTypeId,tvType,etDescription)
         }
-
-
-
         btnType.setOnClickListener {
             intent = Intent(this@DiseaseUpdateActivity, DiseaseDiseaseTypeActivity::class.java)
             startActivityForResult(intent, 0)
@@ -82,19 +80,20 @@ class DiseaseUpdateActivity: ComponentActivity() {
                         disease.id = diseaseId
                         disease.visiting = visiting
                         diseaseController.updateDisease(disease)
+                        intent.putExtra("id", diseaseId)
                         Toast.makeText(this, "Запись изменена", Toast.LENGTH_SHORT).show()
                         setResult(Activity.RESULT_OK)
                     } else {
-                        Toast.makeText(this, "Ошибка: посещение не найдено", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Ошибка: посещение не найдено", Toast.LENGTH_LONG).show()
                     }
                 } catch (ex: Exception) {
-                    Toast.makeText(this, "Ошибка при изменении болезни", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Ошибка при обновлении записи", Toast.LENGTH_LONG).show()
                 }
                 finally {
                     finish()
                 }
             } else {
-                Toast.makeText(this, "Выберите тип болезни", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Выберите тип болезни", Toast.LENGTH_LONG).show()
             }
         }
     }

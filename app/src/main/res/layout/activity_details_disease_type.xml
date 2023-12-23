@@ -42,13 +42,14 @@
         android:layout_gravity="right"
         android:layout_marginTop="16dp"
         android:text="Обновить" />
+
     <Button
         android:id="@+id/bLoad"
-        android:layout_width="119dp"
+        android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginTop="16dp"
-        android:text="Перечень случаев заболевания" />
+        android:text="Загрузить документ (Перечень случаев заболевания)" />
     <Button
         android:id="@+id/bDelete"
         android:layout_width="wrap_content"

@@ -41,14 +41,14 @@ class DiseaseTypeUpdateActivity : ComponentActivity() {
                 diseaseTypeController.updateDiseaseType(diseaseType)
                 Toast.makeText(
                     this,
-                    "Запись обновлена\n Name: ${diseaseType.name}",
+                    "Запись обновлена",
                     Toast.LENGTH_SHORT
                 ).show()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
-                    "Exception of updating record",
-                    Toast.LENGTH_SHORT
+                    "Ошибка при обновлении записи",
+                    Toast.LENGTH_LONG
                 ).show()
             } finally {
                 setResult(Activity.RESULT_OK, intent)

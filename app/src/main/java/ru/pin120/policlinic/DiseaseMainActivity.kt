@@ -37,8 +37,8 @@ class DiseaseMainActivity : ComponentActivity() {
 
         listView.setOnItemClickListener { parent, view, position, id ->
             val idTV:TextView = view.findViewById(R.id.id)
-            val typeTV:TextView = view.findViewById(R.id.type)
-            val descriptionTV:TextView = view.findViewById(R.id.description)
+//            val typeTV:TextView = view.findViewById(R.id.type)
+//            val descriptionTV:TextView = view.findViewById(R.id.description)
             val intent = Intent(this@DiseaseMainActivity, DiseaseDetailsActivity::class.java)
             intent.putExtra("id", idTV.text.toString().toLong())
             startActivityForResult(intent, 0)

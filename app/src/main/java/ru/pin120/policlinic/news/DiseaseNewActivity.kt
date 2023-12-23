@@ -48,7 +48,7 @@ class DiseaseNewActivity : ComponentActivity() {
         visitingId = intent.getLongExtra("visitingId", -1)
 
         if (visitingId == -1L) {
-            Toast.makeText(this, "Ошибка: visitingId не указан", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ошибка: visitingId не указан", Toast.LENGTH_LONG).show()
             finish()
             return
         }
@@ -74,7 +74,7 @@ class DiseaseNewActivity : ComponentActivity() {
                 disease.description = description
                 disease.diseaseType = diseaseType
                 if(description == null || description == ""){
-                    Toast.makeText(this, "Введите описание", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Введите описание", Toast.LENGTH_LONG).show()
                 }
                 else{
                     try {
@@ -84,17 +84,17 @@ class DiseaseNewActivity : ComponentActivity() {
                             Toast.makeText(this, "Болезнь добавлена", Toast.LENGTH_SHORT).show()
                             setResult(Activity.RESULT_OK)
                         } else {
-                            Toast.makeText(this, "Ошибка: посещение не найдено", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Ошибка: посещение не найдено", Toast.LENGTH_LONG).show()
                         }
                     } catch (ex: Exception) {
-                        Toast.makeText(this, "Ошибка при сохранении болезни", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Ошибка при добавлении записи", Toast.LENGTH_LONG).show()
                     }
                     finally {
                         finish()
                     }
                 }
             } else {
-                Toast.makeText(this, "Выберите тип болезни", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Выберите тип болезни", Toast.LENGTH_LONG).show()
             }
         }
     }

@@ -54,19 +54,31 @@ class VisitingUpdateActivity : ComponentActivity() {
                 val doctorId = intent.extras?.getLong("doctorId")
                 val doctor = doctorController.getDoctorById(doctorId!!)
                 doctorIdTV.text = doctorId.toString()
-                doctorTV.text ="${doctor?.lastName + doctor?.firstName + doctor?.patr}"
+                doctorTV.text =doctor?.lastName + " " + doctor?.firstName
+                if(doctor?.patr != null){
+                    doctorTV.text = doctorTV.text.toString()+ " " + doctor?.patr
+                }
             }else{
                 doctorIdTV.text = visiting?.doctor?.id.toString()
-                doctorTV.text = "${visiting?.doctor?.lastName + visiting?.doctor?.firstName + visiting?.doctor?.patr}"
+                doctorTV.text = visiting?.doctor?.lastName + " " +  visiting?.doctor?.firstName
+                if(visiting?.doctor?.patr != null){
+                    doctorTV.text = doctorTV.text.toString()+ " " + visiting?.doctor?.patr
+                }
             }
             if(intent.extras?.getLong("patientId")!= 0L){
                 val patientId = intent.extras?.getLong("patientId")
                 val patient = patientController.getPatientById(patientId!!)
                 patientIdTV.text = patientId.toString()
-                patientTV.text = "${patient?.lastName + patient?.firstName + patient?.patr}"
+                patientTV.text = patient?.lastName + " " + patient?.firstName
+                if(patient?.patr != null){
+                    patientTV.text = patientTV.text.toString()+ " " + patient?.patr
+                }
             }else{
                 patientIdTV.text = visiting?.patient?.id.toString()
-                patientTV.text = "${visiting?.patient?.lastName + visiting?.patient?.firstName + visiting?.patient?.patr}"
+                patientTV.text = visiting?.patient?.lastName + " " + visiting?.patient?.firstName
+                if(visiting?.patient?.patr != null){
+                    patientTV.text = patientTV.text.toString()+" " + visiting?.patient?.patr
+                }
             }
             val year = visiting!!.date!!.year + 1900
             val month = visiting.date!!.month
@@ -104,7 +116,7 @@ class VisitingUpdateActivity : ComponentActivity() {
                 Toast.makeText(
                     this,
                     "Ошибка при обновлении записи",
-                    Toast.LENGTH_SHORT
+                    Toast.LENGTH_LONG
                 ).show()
             } finally {
                 setResult(Activity.RESULT_OK, intent)

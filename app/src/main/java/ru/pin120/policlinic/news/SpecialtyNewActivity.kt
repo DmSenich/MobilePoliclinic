@@ -36,15 +36,15 @@ class SpecialtyNewActivity : ComponentActivity() {
                 setResult(Activity.RESULT_OK, intent)
                 Toast.makeText(
                     this,
-                    "Запись создана\n Name: ${specialty.name}",
+                    "Специальность создана",
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
             }
             catch (ex:Exception){Toast.makeText(
                 this,
-                "Exception of adding record",
-                Toast.LENGTH_SHORT
+                "Ошибка при добавлении записи",
+                Toast.LENGTH_LONG
             ).show()
             }
 //            val resintent = Intent()

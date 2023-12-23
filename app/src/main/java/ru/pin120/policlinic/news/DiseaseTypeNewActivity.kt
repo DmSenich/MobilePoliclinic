@@ -34,15 +34,15 @@ class DiseaseTypeNewActivity : ComponentActivity() {
                 setResult(Activity.RESULT_OK, intent)
                 Toast.makeText(
                     this,
-                    "Запись создана\n Name: ${diseaseType.name}",
+                    "Запись создана",
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
             } catch (ex: Exception) {
                 Toast.makeText(
                     this,
-                    "Exception of adding record",
-                    Toast.LENGTH_SHORT
+                    "Ошибка при добавлении записи",
+                    Toast.LENGTH_LONG
                 ).show()
             }
 

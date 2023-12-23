@@ -45,7 +45,7 @@ class DiseaseDetailsActivity  : ComponentActivity(){
                 setResult(RESULT_OK, intent)
                 finish()
             }catch (ex:Exception){
-                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, ex.message, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -56,7 +56,8 @@ class DiseaseDetailsActivity  : ComponentActivity(){
         val typeTV :TextView = findViewById(R.id.type)
         val descriptionTV:TextView = findViewById(R.id.description)
         if(RESULT_OK == resultCode){
-            intent.putExtra("id", data!!.getLongExtra("id", -1))
+            val id = data?.getLongExtra("id", -1)
+            intent.putExtra("id", id)
             setDiseaseView(idTV, typeTV, descriptionTV)
         }
 

@@ -88,7 +88,7 @@ class DiseaseController(private val dbHelper: DatabaseHelper) {
             put("description", disease.description)
         }
 
-        val rowsAffected = mDb.update("disease", values, "_id = ?", arrayOf(disease.id.toString()))
+        val rowsAffected = mDb.update("diseases", values, "_id = ?", arrayOf(disease.id.toString()))
         if(rowsAffected == 0){
             throw SQLException("Failed to update disease")
         }
