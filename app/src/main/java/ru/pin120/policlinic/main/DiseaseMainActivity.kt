@@ -1,4 +1,4 @@
-package ru.pin120.policlinic
+package ru.pin120.policlinic.main
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import ru.pin120.policlinic.DatabaseHelper
+import ru.pin120.policlinic.R
 import ru.pin120.policlinic.adapters.DiseaseAdapter
 import ru.pin120.policlinic.controllers.DiseaseController
 import ru.pin120.policlinic.details.DiseaseDetailsActivity
@@ -58,7 +60,7 @@ class DiseaseMainActivity : ComponentActivity() {
 
         if (resultCode == Activity.RESULT_OK) {
             val diseases = diseaseController.getAllDiseasesForVisiting(visitingId)
-            val adapter = DiseaseAdapter(this,R.layout.adapter_item_diseases, diseases)
+            val adapter = DiseaseAdapter(this, R.layout.adapter_item_diseases, diseases)
             val listview:ListView = findViewById(R.id.listView)
             listview.adapter = adapter
         }

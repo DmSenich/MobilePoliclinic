@@ -1,4 +1,4 @@
-package ru.pin120.policlinic
+package ru.pin120.policlinic.main
 
 import android.app.Activity
 import android.content.Intent
@@ -10,14 +10,14 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import ru.pin120.policlinic.DatabaseHelper
+import ru.pin120.policlinic.R
 import ru.pin120.policlinic.adapters.VisitingAdapter
 import ru.pin120.policlinic.controllers.VisitingController
 import ru.pin120.policlinic.details.VisitingDetailsActivity
 import ru.pin120.policlinic.details.VisitingFilt
-import ru.pin120.policlinic.models.Doctor
 import ru.pin120.policlinic.models.Visiting
 import ru.pin120.policlinic.news.VisitingNewActivity
-import ru.pin120.policlinic.updates.DoctorSpecialtiesActivity
 import java.io.File
 import java.io.FileWriter
 import java.text.SimpleDateFormat

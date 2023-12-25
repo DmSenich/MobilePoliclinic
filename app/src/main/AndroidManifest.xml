@@ -23,7 +23,7 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:icon="@drawable/ic_policlinica_foreground"
@@ -34,10 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SpecialtyMainActivity"
+        <activity android:name=".main.SpecialtyMainActivity"
             android:exported="false"
             android:label="@string/specialties"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".main.MainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_specialty_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -46,7 +46,7 @@
         <activity android:name=".details.SpecialtyDetailsActivity"
             android:exported="false"
             android:label="@string/specialty"
-            android:parentActivityName=".SpecialtyMainActivity"
+            android:parentActivityName=".main.SpecialtyMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_specialty_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -64,7 +64,7 @@
         <activity android:name=".news.SpecialtyNewActivity"
             android:exported="false"
             android:label="@string/specialty"
-            android:parentActivityName=".SpecialtyMainActivity"
+            android:parentActivityName=".main.SpecialtyMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_specialty_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -72,10 +72,10 @@
         </activity>
 
 
-        <activity android:name=".PatientMainActivity"
+        <activity android:name=".main.PatientMainActivity"
             android:exported="false"
             android:label="@string/patients"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".main.MainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_patient_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -84,7 +84,7 @@
         <activity android:name=".details.PatientDetailsActivity"
             android:exported="false"
             android:label="@string/patient"
-            android:parentActivityName=".PatientMainActivity"
+            android:parentActivityName=".main.PatientMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_patient_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -102,17 +102,17 @@
         <activity android:name=".news.PatientNewActivity"
             android:exported="false"
             android:label="@string/patient"
-            android:parentActivityName=".PatientMainActivity"
+            android:parentActivityName=".main.PatientMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_patient_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
                 android:value=".PatientMainActivity"></meta-data>
         </activity>
 
-        <activity android:name=".DiseaseTypeMainActivity"
+        <activity android:name=".main.DiseaseTypeMainActivity"
             android:exported="false"
             android:label="@string/disease_types"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".main.MainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_disease_type_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -121,7 +121,7 @@
         <activity android:name=".details.DiseaseTypeDetailsActivity"
             android:exported="false"
             android:label="@string/disease_type"
-            android:parentActivityName=".DiseaseTypeMainActivity"
+            android:parentActivityName=".main.DiseaseTypeMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_disease_type_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -139,16 +139,16 @@
         <activity android:name=".news.DiseaseTypeNewActivity"
             android:exported="false"
             android:label="@string/disease_type"
-            android:parentActivityName=".DiseaseTypeMainActivity"
+            android:parentActivityName=".main.DiseaseTypeMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_disease_type_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
                 android:value=".DiseaseTypeMainActivity"></meta-data>
         </activity>
-        <activity android:name=".DoctorMainActivity"
+        <activity android:name=".main.DoctorMainActivity"
             android:exported="false"
             android:label="@string/doctors"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".main.MainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_doctor_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -157,7 +157,7 @@
         <activity android:name=".details.DoctorDetailsActivity"
             android:exported="false"
             android:label="@string/doctor"
-            android:parentActivityName=".DoctorMainActivity"
+            android:parentActivityName=".main.DoctorMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_doctor_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -175,7 +175,7 @@
         <activity android:name=".news.DoctorNewActivity"
             android:exported="false"
             android:label="@string/doctor"
-            android:parentActivityName=".DoctorMainActivity"
+            android:parentActivityName=".main.DoctorMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_doctor_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -191,10 +191,10 @@
                 android:value=".details.DoctorDetailsActivity"></meta-data>
         </activity>
 
-        <activity android:name=".VisitingMainActivity"
+        <activity android:name=".main.VisitingMainActivity"
             android:exported="false"
             android:label="@string/visitings"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".main.MainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_visiting_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -203,7 +203,7 @@
         <activity android:name=".details.VisitingDetailsActivity"
             android:exported="false"
             android:label="@string/visiting"
-            android:parentActivityName=".VisitingMainActivity"
+            android:parentActivityName=".main.VisitingMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_visiting_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -221,7 +221,7 @@
         <activity android:name=".news.VisitingNewActivity"
             android:exported="false"
             android:label="@string/visiting"
-            android:parentActivityName=".VisitingMainActivity"
+            android:parentActivityName=".main.VisitingMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_visiting_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -247,7 +247,7 @@
                 android:value=".VisitingMainActivity"></meta-data>
         </activity>
 
-        <activity android:name=".DiseaseMainActivity"
+        <activity android:name=".main.DiseaseMainActivity"
             android:exported="false"
             android:label="@string/diseases"
             android:parentActivityName=".details.VisitingDetailsActivity"
@@ -259,7 +259,7 @@
         <activity android:name=".details.DiseaseDetailsActivity"
             android:exported="false"
             android:label="@string/disease"
-            android:parentActivityName=".DiseaseMainActivity"
+            android:parentActivityName=".main.DiseaseMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_disease_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"
@@ -276,7 +276,7 @@
         <activity android:name=".news.DiseaseNewActivity"
             android:exported="false"
             android:label="@string/disease"
-            android:parentActivityName=".DiseaseMainActivity"
+            android:parentActivityName=".main.DiseaseMainActivity"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:icon="@drawable/ic_disease_foreground">
             <meta-data android:name="@android.support.PARENT_ACTIVITY"

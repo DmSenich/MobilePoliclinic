@@ -1,19 +1,20 @@
-package ru.pin120.policlinic
+package ru.pin120.policlinic.main
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import ru.pin120.policlinic.DatabaseHelper
+import ru.pin120.policlinic.R
 import ru.pin120.policlinic.adapters.SpecialtyAdapter
 import ru.pin120.policlinic.controllers.SpecialtyController
 import ru.pin120.policlinic.details.SpecialtyDetailsActivity
 import ru.pin120.policlinic.news.SpecialtyNewActivity
 
 class SpecialtyMainActivity : ComponentActivity() {
-    private lateinit var mDBHelper:DatabaseHelper
+    private lateinit var mDBHelper: DatabaseHelper
     private lateinit var specialtyController: SpecialtyController
 
     override fun onCreate(savedInstanceState: Bundle?) {

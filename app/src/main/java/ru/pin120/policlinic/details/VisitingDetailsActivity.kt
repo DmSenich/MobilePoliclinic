@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import ru.pin120.policlinic.DatabaseHelper
-import ru.pin120.policlinic.DiseaseMainActivity
+import ru.pin120.policlinic.main.DiseaseMainActivity
 import ru.pin120.policlinic.R
 import ru.pin120.policlinic.controllers.VisitingController
 import ru.pin120.policlinic.updates.VisitingUpdateActivity

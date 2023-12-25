@@ -1,4 +1,4 @@
-package ru.pin120.policlinic
+package ru.pin120.policlinic.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,15 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import ru.pin120.policlinic.ui.theme.PoliclinicTheme
+import ru.pin120.policlinic.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +26,7 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
         bSpecialties.setOnClickListener {
-            val intent = Intent(this@MainActivity,SpecialtyMainActivity::class.java)
+            val intent = Intent(this@MainActivity, SpecialtyMainActivity::class.java)
             startActivity(intent)
         }
         bDiseaseTypes.setOnClickListener {
@@ -65,8 +57,8 @@ class MainActivity : ComponentActivity() {
                 startActivity(intent)
                 return true
             }
-            R.id.specialties->{
-                val intent = Intent(this@MainActivity,SpecialtyMainActivity::class.java)
+            R.id.specialties ->{
+                val intent = Intent(this@MainActivity, SpecialtyMainActivity::class.java)
                 startActivity(intent)
                 return true
             }

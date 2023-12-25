@@ -1,4 +1,4 @@
-package ru.pin120.policlinic
+package ru.pin120.policlinic.main
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,8 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import org.w3c.dom.Text
+import ru.pin120.policlinic.DatabaseHelper
+import ru.pin120.policlinic.R
 import ru.pin120.policlinic.adapters.DoctorAdapter
 import ru.pin120.policlinic.controllers.DoctorController
 import ru.pin120.policlinic.details.DoctorDetailsActivity

@@ -54,7 +54,6 @@ class DoctorController(private val dbHelper: DatabaseHelper) {
              null
     }
 
-
     fun addDoctor(doctor: Doctor): Long {
         val values = ContentValues().apply {
             put("lastname", doctor.lastName)

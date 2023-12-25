@@ -1,4 +1,4 @@
-package ru.pin120.policlinic
+package ru.pin120.policlinic.main
 
 import android.app.Activity
 import android.content.Intent
@@ -7,16 +7,12 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import ru.pin120.policlinic.DatabaseHelper
+import ru.pin120.policlinic.R
 import ru.pin120.policlinic.adapters.PatientAdapter
-import ru.pin120.policlinic.adapters.SpecialtyAdapter
 import ru.pin120.policlinic.controllers.PatientController
-import ru.pin120.policlinic.controllers.SpecialtyController
 import ru.pin120.policlinic.details.PatientDetailsActivity
-import ru.pin120.policlinic.details.SpecialtyDetailsActivity
 import ru.pin120.policlinic.news.PatientNewActivity
-import ru.pin120.policlinic.news.SpecialtyNewActivity
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class PatientMainActivity : ComponentActivity() {
     private lateinit var mDBHelper: DatabaseHelper
