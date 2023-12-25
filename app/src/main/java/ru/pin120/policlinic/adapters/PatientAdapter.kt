@@ -30,7 +30,7 @@ class PatientAdapter(context: Context, resource: Int, objects: List<Patient>) :
 //        val apartmentTV: TextView = convertView.findViewById(R.id.apartment)
 
         idTV.text = patient?.id.toString()
-        tvFIO.text = patient?.lastName + " " + patient?.firstName + " " + patient?.patr
+        tvFIO.text = patient?.lastName + " " + patient?.firstName
         if(patient?.patr != null){
             tvFIO.text = tvFIO.text.toString() + " " + patient?.patr
         }
